@@ -1,7 +1,445 @@
 {
   "as_of": "2026-11-04",
-  "notes": "Public AI model news with emphasis on free / open-weight releases. Summaries are short; follow source_url. Never treat as investment advice.",
+  "notes": "Public AI news with emphasis on free / open-weight releases, free API tiers, frontier launches, and viral indie builds. Summaries are short; follow url. Never treat as investment advice. Prefer official pages.",
   "items": [
+    {
+      "id": "2026-10-31-karpathy-hackertube",
+      "title": "Karpathy ships HackerTube (~2h with Claude Code)",
+      "title_zh": "Karpathy 手搓上线 HackerTube（约 2 小时，Claude Code）",
+      "summary": "Andrej Karpathy’s Oct 31 post: Claude Code (Opus 5.5) mined HN comments into a YouTube-style site of 6,454 videos recommended across ~40K comments (2007–2026). He did API key, VPS and domain by hand; live at hackertube.org.",
+      "summary_zh": "Andrej Karpathy 10/31 博文：用 Claude Code（Opus 5.5）从 HN 评论筛出约 4 万条荐片评论，做成 6454 条视频的 YouTube 风格站（2007–2026）。本人只手工做了 YouTube API Key、VPS 与域名；站点 hackertube.org。",
+      "url": "https://karpathy.bearblog.dev/hacker-tube/",
+      "tags": [
+        "indie",
+        "frontier"
+      ],
+      "source": "karpathy.bearblog.dev",
+      "date": "2026-10-31"
+    },
+    {
+      "id": "2026-11-01-hackertube-hn",
+      "title": "HackerTube hits HN front page (hackertube.org)",
+      "title_zh": "HackerTube 登上 HN 首页（hackertube.org）",
+      "summary": "HN thread for Karpathy’s HackerTube: YouTube-style UI over 6,454 videos sourced from HN comment recommendations since 2007; site and exportable dataset discussed in-thread.",
+      "summary_zh": "Karpathy 的 HackerTube 登上 HN：基于 2007 至今 HN 评论荐片的 6454 条视频 YouTube 风界面；帖内讨论站点与可导出数据集。",
+      "url": "https://news.ycombinator.com/item?id=50319510",
+      "tags": [
+        "indie",
+        "frontier"
+      ],
+      "source": "Hacker News",
+      "date": "2026-11-01"
+    },
+    {
+      "id": "2026-11-03-qwen-open-weight-promise",
+      "title": "Qwen restates open-weight commitment; Max stays closed",
+      "title_zh": "通义重申开源承诺，Max 仍闭源 API",
+      "summary": "Coverage of Alibaba/Qwen’s open-weight stats and that Max-tier models remain API-only while smaller tiers stay downloadable.",
+      "summary_zh": "报道梳理通义开源数据与承诺：Max 档仍为 API-only，较小档位继续开源权重。",
+      "url": "http://rits.shanghai.nyu.edu/ai/qwen-restates-its-open-weight-promise-max-tier-still-closed/",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "qwen",
+        "frontier"
+      ],
+      "source": "NYU Shanghai RITS AI notes",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "2026-11-02-anthropic-flashprove",
+      "title": "Anthropic open-sources FlashProve (provable inference)",
+      "title_zh": "Anthropic 开源 FlashProve（可证明推理原型）",
+      "summary": "Anthropic research post on provable inference; FlashProve is an Apache-2.0 prototype that can cryptographically attest a response came from committed model weights without revealing them.",
+      "summary_zh": "Anthropic 发布可证明推理研究，并开源 Apache-2.0 原型 FlashProve：可在不泄露权重的情况下证明回复来自已承诺模型。",
+      "url": "https://www.anthropic.com/research/provable-inference",
+      "tags": [
+        "frontier",
+        "open-weight"
+      ],
+      "source": "Anthropic Research",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "2026-11-02-google-ai-october-recap",
+      "title": "Google AI October recap: Gemini 4 Argon/Carbon + Genie 4",
+      "title_zh": "谷歌 AI 十月回顾：Gemini 4 Argon/Carbon 与 Genie 4",
+      "summary": "Google’s Nov 2 roundup: Gemini 4 Argon rolled out globally; Gemini 4 Carbon in limited Fairwind/gov cyber testing; Genie 4 world model previewed; EmbeddingGemma 2 and SynthID Detector expansion noted.",
+      "summary_zh": "谷歌 11/2 回顾：Gemini 4 Argon 全球上线；Carbon 进入 Fairwind/政府侧有限测试；Genie 4 世界模型预览；并提到 EmbeddingGemma 2 与 SynthID Detector 扩展。",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/",
+      "tags": [
+        "frontier"
+      ],
+      "source": "Google Blog",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "2026-11-02-glm-5.3-flashx-legal",
+      "title": "GLM-5.3-FlashX-Legal appears in November model trackers",
+      "title_zh": "11 月追踪到 GLM-5.3-FlashX-Legal 上线",
+      "summary": "Third-party model-update trackers list GLM-5.3-FlashX-Legal (Z.ai) around Nov 2, 2026 — hosted/API oriented, not confirmed open-weight.",
+      "summary_zh": "第三方模型更新榜在 2026-11-02 左右列出 GLM-5.3-FlashX-Legal（智谱），偏托管/API，非确认开源权重。",
+      "url": "https://llmbenchmark.ai/model-updates",
+      "tags": [
+        "frontier",
+        "glm"
+      ],
+      "source": "LLMBenchmark model updates",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "2026-11-02-openai-lifeval",
+      "title": "OpenAI publishes LifeVal everyday-task eval (Nov 2)",
+      "title_zh": "OpenAI 发布 LifeVal 日常任务评测（11/2）",
+      "summary": "Press digests cite OpenAI’s Nov 2 LifeVal evaluation of everyday personal tasks; OpenAI’s chart shows large gains from GPT-5.2 to GPT-6 Astra on its own benchmark — treat as first-party eval.",
+      "summary_zh": "多家摘要转述 OpenAI 11/2 的 LifeVal 日常任务评测；自家图表显示从 GPT-5.2 到 GPT-6 Astra 大幅提升——属第一方评测，请看原文。",
+      "url": "https://theaicommand.com/ai-news/ai-updates-1-to-3-november-2026",
+      "tags": [
+        "frontier"
+      ],
+      "source": "TheAICommand digest",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "2026-11-02-openai-bug-bounty",
+      "title": "OpenAI more than quadruples bug-bounty midpoints",
+      "title_zh": "OpenAI 大幅提高漏洞赏金中位区间",
+      "summary": "Nov 2 coverage: OpenAI says it more than quadrupled midpoint rewards for medium/high/critical findings; critical ChatGPT/Codex/API issues can reach up to $30k (exceptional up to $172k with bonuses).",
+      "summary_zh": "11/2 报道：OpenAI 称中高危赏金中位区间提高四倍以上；ChatGPT/Codex/API 关键问题最高可达 3 万美元（例外加奖金可达 17.2 万）。",
+      "url": "https://theaicommand.com/ai-news/ai-updates-1-to-3-november-2026",
+      "tags": [
+        "frontier"
+      ],
+      "source": "TheAICommand digest",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "2026-11-03-google-meet-ai-notice",
+      "title": "Google Meet: admin policy notice before AI note-taking",
+      "title_zh": "Google Meet：管理员可在 AI 纪要前显示政策提示",
+      "summary": "Google announced Workspace admins can show custom policy text in the Meet green room when a call is recorded, transcribed, or summarised by Gemini note-taking (rollout from ~Nov 2).",
+      "summary_zh": "谷歌宣布 Workspace 管理员可在 Meet 等候室显示自定义政策文案，用于 Gemini 录制/转写/纪要场景（约 11/2 起滚动发布）。",
+      "url": "https://theaicommand.com/ai-news/ai-updates-1-to-3-november-2026",
+      "tags": [
+        "frontier"
+      ],
+      "source": "TheAICommand digest",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "z-ai-pricing-free-flash",
+      "title": "Z.AI lists GLM-4.7-Flash / GLM-4.5-Flash API as Free",
+      "title_zh": "Z.AI 价表：GLM-4.7-Flash / 4.5-Flash API 免费",
+      "summary": "Current Z.AI developer pricing table marks GLM-4.7-Flash and GLM-4.5-Flash input/output/cache as Free (verify before relying on free tier).",
+      "summary_zh": "Z.AI 官方价表将 GLM-4.7-Flash、GLM-4.5-Flash 的输入/输出/缓存标为 Free（使用前请再核验）。",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "tags": [
+        "free-model",
+        "api-pricing",
+        "glm"
+      ],
+      "source": "Z.AI docs",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "kimi-k3.1-pro-platform",
+      "title": "Kimi K3.1 Pro live on Moonshot API platform",
+      "title_zh": "月之暗面 Kimi K3.1 Pro 上线 API",
+      "summary": "Kimi API Platform highlights K3.1 Pro at $2/$10 per MTok (cache hit $0.20); moonshot-v1 family previously retired.",
+      "summary_zh": "Kimi API 平台主推 K3.1 Pro（$2/$10 / MTok，缓存命中 $0.20）；旧 moonshot-v1 已下线。",
+      "url": "https://platform.kimi.ai/",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "kimi"
+      ],
+      "source": "Kimi API Platform",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "gemini-api-free-tier",
+      "title": "Gemini Developer API still offers a free tier",
+      "title_zh": "Gemini 开发者 API 仍提供免费档",
+      "summary": "Google AI for Developers pricing page: Free tier includes limited model access and free input/output tokens via AI Studio (content may improve Google products). Check live limits in your project.",
+      "summary_zh": "谷歌开发者价表：免费档含有限模型与免费输入/输出（AI Studio；内容可能用于改进产品）。具体限额以项目控制台为准。",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing",
+      "tags": [
+        "free-model",
+        "api-pricing"
+      ],
+      "source": "Google AI for Developers",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "openrouter-free-models",
+      "title": "OpenRouter :free models — 50 req/day (1k after $10)",
+      "title_zh": "OpenRouter :free 模型：每天 50 次（充 $10 后 1000）",
+      "summary": "Guides summarizing OpenRouter docs: model IDs ending in :free cost $0; shared caps ~20 RPM / 50 RPD, rising to 1,000 RPD after buying $10 credits. Rotating open models only.",
+      "summary_zh": "综合 OpenRouter 文档的指南：ID 以 :free 结尾的模型 $0；约 20 RPM / 50 RPD，累计充值 $10 后日限升至 1000。免费池为轮换开源模型。",
+      "url": "https://openrouter.ai/docs/api-reference/limits",
+      "tags": [
+        "free-model",
+        "api-pricing"
+      ],
+      "source": "OpenRouter docs",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "groq-free-plan-oss",
+      "title": "Groq free plan: gpt-oss + Qwen3.8 without a card",
+      "title_zh": "Groq 免费档：gpt-oss 与 Qwen3.8，无需绑卡",
+      "summary": "2026 free-API roundups: Groq Free covers openai/gpt-oss-120b & 20b plus qwen/qwen3.8-27b (~30 RPM, 1k req/day, 200k tokens/day per model); no payment method required for Free.",
+      "summary_zh": "2026 免费 API 盘点：Groq Free 含 gpt-oss-120b/20b 与 Qwen3.8-27B（约 30 RPM、每天 1000 次、每模型 20 万 tokens）；免费档可不绑卡。",
+      "url": "https://byoklist.com/guides/free-ai-api-keys",
+      "tags": [
+        "free-model",
+        "api-pricing"
+      ],
+      "source": "BYOKlist guide",
+      "date": "2026-10-29"
+    },
+    {
+      "id": "cloudflare-workers-ai-free-neurons",
+      "title": "Cloudflare Workers AI: 10,000 free Neurons/day",
+      "title_zh": "Cloudflare Workers AI：每天 1 万免费 Neurons",
+      "summary": "Cloudflare docs: Workers Free includes 10,000 Neurons/day; some frontier hosts (e.g. certain Kimi/GLM/DeepSeek) need Workers Paid. Text gen capped at 300 RPM.",
+      "summary_zh": "Cloudflare 文档：Workers 免费档含每天 1 万 Neurons；部分前沿模型需 Workers Paid。文本生成全计划 300 RPM 上限。",
+      "url": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "tags": [
+        "free-model",
+        "api-pricing"
+      ],
+      "source": "Cloudflare docs",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "mistral-free-plan-credits",
+      "title": "Mistral Free plan: ~$10/mo API credits, no card",
+      "title_zh": "Mistral 免费计划：约每月 $10 API 额度，可不绑卡",
+      "summary": "Mistral pricing / free-API trackers: Free mode grants about $10 of monthly API credits with console rate limits; docs say no card required for Free.",
+      "summary_zh": "Mistral 价表与免费 API 追踪：Free 模式约每月 $10 API 额度，限额在控制台查看；文档称 Free 可不绑卡。",
+      "url": "https://mistral.ai/pricing",
+      "tags": [
+        "free-model",
+        "api-pricing"
+      ],
+      "source": "Mistral pricing",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "alibaba-model-studio-free-quota",
+      "title": "Alibaba Model Studio: new-user free token quota",
+      "title_zh": "阿里云百炼：新用户免费 Token 额度",
+      "summary": "Alibaba Cloud help: international Model Studio typically grants ~1M tokens per model (in+out) for 90 days after activation for Qwen in Singapore region — enable Free Quota Only to avoid overage.",
+      "summary_zh": "阿里云帮助文档：国际站 Model Studio 新用户常见为每模型约 100 万 tokens（输入+输出）90 天有效（新加坡区通义）；建议打开仅用免费额度以免超额计费。",
+      "url": "https://www.alibabacloud.com/help/en/model-studio/new-free-quota",
+      "tags": [
+        "free-model",
+        "api-pricing",
+        "qwen"
+      ],
+      "source": "Alibaba Cloud",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "2026-10-27-deepmind-genie-4",
+      "title": "DeepMind announces Genie 4 world model (native audio)",
+      "title_zh": "DeepMind 发布 Genie 4 世界模型（原生音频）",
+      "summary": "Official DeepMind blog (Oct 27): Genie 4 is a real-time interactive world model with native audio/dialogue; research preview for trusted testers, then Google AI Ultra / early API partners.",
+      "summary_zh": "DeepMind 官方博文（10/27）：Genie 4 为实时可交互世界模型并原生生成音频/对话；先给可信测试者预览，随后面向 AI Ultra / 早期 API 伙伴。",
+      "url": "https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/",
+      "tags": [
+        "frontier"
+      ],
+      "source": "Google DeepMind",
+      "date": "2026-10-27"
+    },
+    {
+      "id": "2026-10-26-openai-gpt-6-1-terra",
+      "title": "OpenAI ships GPT-6.1 Terra + system-card addendum",
+      "title_zh": "OpenAI 发布 GPT-6.1 Terra 及系统卡附录",
+      "summary": "OpenAI index + Deployment Safety Hub addendum for GPT-6.1 Terra (Oct 26): fast model for high-volume work; cybersecurity rated Critical with safeguards aligned to GPT-6.1 Sol / GPT-6 Astra.",
+      "summary_zh": "OpenAI 介绍页与部署安全中心附录（10/26）：GPT-6.1 Terra 面向高通量专业工作；网络安全评级 Critical，防护与 GPT-6.1 Sol / GPT-6 Astra 对齐。",
+      "url": "https://openai.com/index/introducing-gpt-6-1-terra",
+      "tags": [
+        "frontier"
+      ],
+      "source": "OpenAI",
+      "date": "2026-10-26"
+    },
+    {
+      "id": "2026-10-25-nanbeige-4-3-33b",
+      "title": "Nanbeige4.3-33B open under Apache 2.0 (HF)",
+      "title_zh": "Nanbeige4.3-33B 以 Apache 2.0 开源（HF）",
+      "summary": "MarkTechPost (Oct 25): Nanbeige LLM Lab (BOSS Zhipin) releases Nanbeige4.3-33B (+ Base) on Hugging Face under Apache 2.0; 33B dense, ~524k context, aimed at agentic coding/cowork.",
+      "summary_zh": "MarkTechPost（10/25）：BOSS 直聘 Nanbeige 实验室在 HF 以 Apache 2.0 发布 Nanbeige4.3-33B（及 Base）；33B 稠密、约 52.4 万上下文，面向 agentic coding。",
+      "url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "MarkTechPost",
+      "date": "2026-10-25"
+    },
+    {
+      "id": "xiaomi-mimo-v2.6-pricing",
+      "title": "Xiaomi MiMo V2.6 API pricing (V2.5 retired)",
+      "title_zh": "小米 MiMo V2.6 API 定价（V2.5 已下线）",
+      "summary": "Official MiMo docs: V2.5 offline since 2026-10-21; V2.6 Pro/Flash publish CNY and overseas USD token rates.",
+      "summary_zh": "官方文档：V2.5 已于 2026-10-21 下线；V2.6 Pro/Flash 公布国内人民币与海外美元按量价。",
+      "url": "https://mimo.mi.com/docs/zh-CN/pricing",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "mimo"
+      ],
+      "source": "Xiaomi MiMo docs",
+      "date": "2026-10-20"
+    },
+    {
+      "id": "minimax-m3.1-flash-launch",
+      "title": "MiniMax launches M3.1 Flash with $0.15/$0.60 API pricing",
+      "title_zh": "MiniMax 发布 M3.1 Flash，API $0.15/$0.60",
+      "summary": "MiniMax research post for MiniMax-M3.1-Flash; official intl pricing lists $0.15 input / $0.60 output per 1M tokens.",
+      "summary_zh": "MiniMax 发布 M3.1 Flash；国际站价表为每百万 tokens 输入 $0.15 / 输出 $0.60。",
+      "url": "https://www.minimax.io/blog/minimax-m31f",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "minimax"
+      ],
+      "source": "MiniMax",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "2026-10-17-minimax-m3-1-flash-weights",
+      "title": "MiniMax-M3.1-Flash weights on Hugging Face",
+      "title_zh": "Hugging Face 可下载 MiniMax-M3.1-Flash 权重",
+      "summary": "Open-weights trackers list MiniMaxAI/MiniMax-M3.1-Flash on HF around Oct 17 under MiniMax Community License (check commercial terms before shipping).",
+      "summary_zh": "开源权重追踪约 10/17 列出 MiniMaxAI/MiniMax-M3.1-Flash（MiniMax Community License；商用前请核对条款）。",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "minimax"
+      ],
+      "source": "Hugging Face",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "2026-10-17-deepseek-v4-1-flash-1017",
+      "title": "DeepSeek-V4.1-Flash-1017 open weights (MIT)",
+      "title_zh": "DeepSeek-V4.1-Flash-1017 开源权重（MIT）",
+      "summary": "HF repo deepseek-ai/DeepSeek-V4.1-Flash-1017 published ~Oct 17 with MIT license; trackers describe large MoE Flash checkpoint with long context for agent runs.",
+      "summary_zh": "HF 仓库 deepseek-ai/DeepSeek-V4.1-Flash-1017 约 10/17 以 MIT 发布；追踪称其为面向 agent 的长上下文 Flash 大 MoE 检查点。",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "Hugging Face / DeepSeek",
+      "date": "2026-10-17"
+    },
+    {
+      "id": "2026-10-16-reflection-beam",
+      "title": "Reflection releases Beam 1.0 open weights (Apache 2.0)",
+      "title_zh": "Reflection 开源 Beam 1.0 权重（Apache 2.0）",
+      "summary": "Reflection blog (Oct 16): Beam is a 501B/23B-active MoE for coding & agents; weights on HF under Apache 2.0; free-to-start API beta at platform.reflection.ai.",
+      "summary_zh": "Reflection 博文（10/16）：Beam 为 501B/23B 激活 MoE，面向编程与 agent；HF Apache 2.0 权重；platform.reflection.ai 提供免费起步 API beta。",
+      "url": "https://reflection.ai/blog/beam-is-available",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "frontier"
+      ],
+      "source": "Reflection",
+      "date": "2026-10-16"
+    },
+    {
+      "id": "2026-10-15-meta-muse-spark-open",
+      "title": "Meta releases Muse Spark Open weights",
+      "title_zh": "Meta 发布 Muse Spark Open 权重",
+      "summary": "Meta AI Research (Oct 15): Muse Spark Open — natively multimodal ~816B/42B active, 1M context — weights under Muse Model License; HF collection + hosted partners (Together, Fireworks, Groq, OpenRouter, etc.).",
+      "summary_zh": "Meta AI Research（10/15）：Muse Spark Open — 原生多模态约 816B/42B 激活、100 万上下文 — Muse Model License；HF 合集及多家托管（Together、Fireworks、Groq、OpenRouter 等）。",
+      "url": "https://research.meta.ai/blog/muse-spark-open",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "frontier"
+      ],
+      "source": "Meta AI Research",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "2026-10-15-muse-spark-hf",
+      "title": "Muse Spark Open collection on Hugging Face",
+      "title_zh": "Hugging Face 上的 Muse Spark Open 合集",
+      "summary": "Official HF collection linked from Meta’s launch post for downloading Muse Spark Open weights / related artifacts.",
+      "summary_zh": "Meta 发布帖链接的官方 HF 合集，用于下载 Muse Spark Open 权重及相关产物。",
+      "url": "https://huggingface.co/collections/meta-models/muse-spark-open",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "Hugging Face",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "2026-10-15-tencent-hy-memory",
+      "title": "Tencent Hy-Memory-30B-A3B lands on HF (Apache 2.0)",
+      "title_zh": "腾讯 Hy-Memory-30B-A3B 登陆 HF（Apache 2.0）",
+      "summary": "Open-weights trackers list tencent/Hy-Memory-30B-A3B around Oct 15 under Apache-2.0 (~30B MoE A3B); verify card before production use.",
+      "summary_zh": "开源权重追踪约 10/15 列出 tencent/Hy-Memory-30B-A3B（Apache-2.0，约 30B MoE A3B）；生产前请核模型卡。",
+      "url": "https://huggingface.co/tencent/Hy-Memory-30B-A3B",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "Hugging Face / Tencent",
+      "date": "2026-10-15"
+    },
+    {
+      "id": "2026-10-14-ibm-granite-switch-4-1",
+      "title": "IBM Granite Switch 4.1 (8B/30B) open on HF",
+      "title_zh": "IBM Granite Switch 4.1（8B/30B）开源上线 HF",
+      "summary": "IBM Granite Switch 4.1 8B and 30B repos on Hugging Face under Apache 2.0 (mid-Oct), with GGUF variants for local serve.",
+      "summary_zh": "IBM Granite Switch 4.1 的 8B/30B 仓库于 10 月中在 HF 以 Apache 2.0 发布，并有 GGUF 便于本地推理。",
+      "url": "https://huggingface.co/ibm-granite/granite-switch-4.1-30b",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "Hugging Face / IBM Granite",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "2026-10-14-embeddinggemma-2",
+      "title": "Google EmbeddingGemma 2 for on-device multimodal search",
+      "title_zh": "谷歌 EmbeddingGemma 2：端侧多模态检索",
+      "summary": "Google’s October AI roundup: EmbeddingGemma 2 (~740M, Gemma 4 family) maps code/images/video/audio into one space for private offline apps; Apache-licensed weights tracked on HF.",
+      "summary_zh": "谷歌十月 AI 回顾：EmbeddingGemma 2（约 7.4 亿，Gemma 4 系）将代码/图像/视频/音频映射到统一空间，便于私有离线应用；HF 可追踪到 Apache 权重。",
+      "url": "https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-october-2026/",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "Google Blog",
+      "date": "2026-10-14"
+    },
+    {
+      "id": "2026-10-13-inclusionai-ling-3-1-flash",
+      "title": "inclusionAI Ling-3.1-flash open (MIT) in Oct trackers",
+      "title_zh": "十月追踪：inclusionAI Ling-3.1-flash 开源（MIT）",
+      "summary": "October open-weight roundups list inclusionAI Ling-3.1-flash (~560B/25B active) under MIT around Oct 13 — confirm the official HF card before shipping.",
+      "summary_zh": "十月开源权重盘点约 10/13 列出 inclusionAI Ling-3.1-flash（约 560B/25B 激活，MIT）——上线前请核对官方 HF 模型卡。",
+      "url": "https://ai-solutions.wiki/news/open-weight-models-october-2026/",
+      "tags": [
+        "free-model",
+        "open-weight"
+      ],
+      "source": "AI Solutions Wiki tracker",
+      "date": "2026-10-13"
+    },
     {
       "id": "2026-01-19-glm-4.7-flash-open",
       "title": "Z.ai open-sources GLM-4.7-Flash (free weights)",
@@ -33,94 +471,74 @@
       "date": "2026-01-19"
     },
     {
-      "id": "2026-11-03-qwen-open-weight-promise",
-      "title": "Qwen restates open-weight commitment; Max stays closed",
-      "title_zh": "通义重申开源承诺，Max 仍闭源 API",
-      "summary": "Coverage of Alibaba/Qwen’s open-weight stats and that Max-tier models remain API-only while smaller tiers stay downloadable.",
-      "summary_zh": "报道梳理通义开源数据与承诺：Max 档仍为 API-only，较小档位继续开源权重。",
-      "url": "http://rits.shanghai.nyu.edu/ai/qwen-restates-its-open-weight-promise-max-tier-still-closed/",
+      "id": "cohere-trial-key-free",
+      "title": "Cohere trial keys: 1,000 API calls/month free",
+      "title_zh": "Cohere 试用 Key：每月 1000 次免费调用",
+      "summary": "Cohere rate-limit docs: trial keys get 1,000 API calls/month and ~20 RPM per chat model — evaluation only, not for production.",
+      "summary_zh": "Cohere 限流文档：试用 Key 每月 1000 次、聊天约 20 RPM — 仅评估，不可用于生产。",
+      "url": "https://docs.cohere.com/docs/rate-limits",
       "tags": [
         "free-model",
-        "open-weight",
-        "qwen",
-        "frontier"
+        "api-pricing"
       ],
-      "source": "NYU Shanghai RITS AI notes",
+      "source": "Cohere docs",
       "date": "2026-11-03"
     },
     {
-      "id": "z-ai-pricing-free-flash",
-      "title": "Z.AI lists GLM-4.7-Flash / GLM-4.5-Flash API as Free",
-      "title_zh": "Z.AI 价表：GLM-4.7-Flash / 4.5-Flash API 免费",
-      "summary": "Current Z.AI developer pricing table marks GLM-4.7-Flash and GLM-4.5-Flash input/output/cache as Free (verify before relying on free tier).",
-      "summary_zh": "Z.AI 官方价表将 GLM-4.7-Flash、GLM-4.5-Flash 的输入/输出/缓存标为 Free（使用前请再核验）。",
-      "url": "https://docs.z.ai/guides/overview/pricing",
+      "id": "sambanova-free-tier-limits",
+      "title": "SambaNova Cloud free tier rate limits published",
+      "title_zh": "SambaNova Cloud 公布免费档限额",
+      "summary": "SambaNova docs: free tier roughly 20 RPM / 20 RPD / 200k tokens/day per model until a payment method is linked; preview models may be removed quickly.",
+      "summary_zh": "SambaNova 文档：免费档大约每模型 20 RPM / 20 RPD / 每天 20 万 tokens（绑卡前）；预览模型可能随时下线。",
+      "url": "https://docs.sambanova.ai/docs/en/models/rate-limits",
       "tags": [
         "free-model",
-        "api-pricing",
-        "glm"
+        "api-pricing"
       ],
-      "source": "Z.AI docs",
-      "date": "2026-11-04"
+      "source": "SambaNova docs",
+      "date": "2026-11-03"
     },
     {
-      "id": "2026-11-02-glm-5.3-flashx-legal",
-      "title": "GLM-5.3-FlashX-Legal appears in November model trackers",
-      "title_zh": "11 月追踪到 GLM-5.3-FlashX-Legal 上线",
-      "summary": "Third-party model-update trackers list GLM-5.3-FlashX-Legal (Z.ai) around Nov 2, 2026 — hosted/API oriented, not confirmed open-weight.",
-      "summary_zh": "第三方模型更新榜在 2026-11-02 左右列出 GLM-5.3-FlashX-Legal（智谱），偏托管/API，非确认开源权重。",
-      "url": "https://llmbenchmark.ai/model-updates",
+      "id": "hf-inference-providers-free-credit",
+      "title": "Hugging Face Inference Providers: $0.10 free credit/mo",
+      "title_zh": "HF Inference Providers：每月 $0.10 免费额度",
+      "summary": "HF Inference Providers pricing: free accounts get about $0.10/mo credit (PRO $2); credits do not apply when you bring your own provider key.",
+      "summary_zh": "HF Inference Providers 价表：免费账号约每月 $0.10 额度（PRO $2）；自带供应商 Key 时不计该额度。",
+      "url": "https://huggingface.co/docs/inference-providers/pricing",
       "tags": [
-        "frontier",
-        "glm"
+        "free-model",
+        "api-pricing"
       ],
-      "source": "LLMBenchmark model updates",
-      "date": "2026-11-02"
+      "source": "Hugging Face docs",
+      "date": "2026-11-03"
     },
     {
-      "id": "minimax-m3.1-flash-launch",
-      "title": "MiniMax launches M3.1 Flash with $0.15/$0.60 API pricing",
-      "title_zh": "MiniMax 发布 M3.1 Flash，API $0.15/$0.60",
-      "summary": "MiniMax research post for MiniMax-M3.1-Flash; official intl pricing lists $0.15 input / $0.60 output per 1M tokens.",
-      "summary_zh": "MiniMax 发布 M3.1 Flash；国际站价表为每百万 tokens 输入 $0.15 / 输出 $0.60。",
-      "url": "https://www.minimax.io/blog/minimax-m31f",
+      "id": "2026-10-30-baidu-unlimited-ocr-2",
+      "title": "Baidu Unlimited-OCR-2 open on HF (MIT)",
+      "title_zh": "百度 Unlimited-OCR-2 开源上线 HF（MIT）",
+      "summary": "Open-weights trackers list baidu/Unlimited-OCR-2 (~3.3B, MIT) around Oct 26–30 — OCR-focused open model.",
+      "summary_zh": "开源权重追踪约 10/26–30 列出 baidu/Unlimited-OCR-2（约 3.3B，MIT）— 面向 OCR 的开源模型。",
+      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
       "tags": [
-        "frontier",
-        "api-pricing",
-        "minimax"
+        "free-model",
+        "open-weight"
       ],
-      "source": "MiniMax",
-      "date": "2026-10-19"
+      "source": "Hugging Face / Baidu",
+      "date": "2026-10-26"
     },
     {
-      "id": "kimi-k3.1-pro-platform",
-      "title": "Kimi K3.1 Pro live on Moonshot API platform",
-      "title_zh": "月之暗面 Kimi K3.1 Pro 上线 API",
-      "summary": "Kimi API Platform highlights K3.1 Pro at $2/$10 per MTok (cache hit $0.20); moonshot-v1 family previously retired.",
-      "summary_zh": "Kimi API 平台主推 K3.1 Pro（$2/$10 / MTok，缓存命中 $0.20）；旧 moonshot-v1 已下线。",
-      "url": "https://platform.kimi.ai/",
+      "id": "hackertube-live-site",
+      "title": "HackerTube live site + data export",
+      "title_zh": "HackerTube 线上站点与数据导出",
+      "summary": "Live product linked from Karpathy’s post: account-free HN-curated YouTube discovery at hackertube.org, with dataset export for agents to fork.",
+      "summary_zh": "Karpathy 博文指向的线上产品：hackertube.org 免登录的 HN 策展视频站，并提供可供 agent 复刻的数据导出。",
+      "url": "https://hackertube.org/",
       "tags": [
-        "frontier",
-        "api-pricing",
-        "kimi"
+        "indie",
+        "frontier"
       ],
-      "source": "Kimi API Platform",
-      "date": "2026-11-04"
-    },
-    {
-      "id": "xiaomi-mimo-v2.6-pricing",
-      "title": "Xiaomi MiMo V2.6 API pricing (V2.5 retired)",
-      "title_zh": "小米 MiMo V2.6 API 定价（V2.5 已下线）",
-      "summary": "Official MiMo docs: V2.5 offline since 2026-10-21; V2.6 Pro/Flash publish CNY and overseas USD token rates.",
-      "summary_zh": "官方文档：V2.5 已于 2026-10-21 下线；V2.6 Pro/Flash 公布国内人民币与海外美元按量价。",
-      "url": "https://mimo.mi.com/docs/zh-CN/pricing",
-      "tags": [
-        "frontier",
-        "api-pricing",
-        "mimo"
-      ],
-      "source": "Xiaomi MiMo docs",
-      "date": "2026-10-20"
+      "source": "hackertube.org",
+      "date": "2026-10-31"
     }
   ]
 }
