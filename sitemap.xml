@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Replace BASE_URL with your live origin, e.g. https://ai-cases.pages.dev -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>BASE_URL/</loc>
+    <loc>https://ai-indie-revenue-cases.jinxingle1983.workers.dev/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>BASE_URL/index.html</loc>
+    <loc>https://ai-indie-revenue-cases.jinxingle1983.workers.dev/index.html</loc>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

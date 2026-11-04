@@ -1,6 +1,4 @@
 User-agent: *
 Allow: /
 
-# After deploy, set Sitemap to your full URL, e.g.:
-# Sitemap: https://YOUR_DOMAIN/sitemap.xml
-Sitemap: ./sitemap.xml
+Sitemap: https://ai-indie-revenue-cases.jinxingle1983.workers.dev/sitemap.xml
