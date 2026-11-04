@@ -10,6 +10,21 @@
   // When set, POSTs JSON to https://formspree.io/f/<id>
   const FORMSPREE_ID = "";
 
+  // Curator X profile (static hardcode — do not call X API from the browser)
+  const OWNER_X = {
+    username: "coienJxl",
+    name: "inVi_At",
+    description: "inVi_At,Author Of CryptoPunk Dolls",
+    profile_image_url:
+      "https://pbs.twimg.com/profile_images/1503896775425671170/Fd4H0Gc6_400x400.jpg",
+    profile_url: "https://x.com/coienJxl",
+    followers: 1,
+    following: 14,
+    tweets: 64,
+    verified: false,
+    gumroad: "https://jinxingle.gumroad.com",
+  };
+
   const I18N = {
     en: {
       title: "AI Indie Revenue Cases",
@@ -57,10 +72,9 @@
       submitCase: "Submit a case",
       submitTitle: "Submit a case",
       submitReviewNote: "Reviewed before publish — submissions are not auto-listed.",
-      submitHintCopy:
-        "This site is static. Copy the JSON and send it to the maintainer, or use email if configured.",
-      submitHintMailto: "You can email the submission, or copy JSON for the maintainer to paste into cases.json.",
-      submitHintFormspree: "Send via Formspree, or copy JSON as a backup.",
+      submitHintCopy: "Static site — copy JSON or email the maintainer.",
+      submitHintMailto: "Email submission, or copy JSON for cases.json.",
+      submitHintFormspree: "Send via Formspree, or copy JSON as backup.",
       fName: "Product name",
       fOneLiner: "One-liner (idea)",
       fRevenue: "Revenue",
@@ -84,6 +98,9 @@
       formspreeFail: "Send failed. Please Copy as JSON instead.",
       formMissing: "Please fill required fields (name, idea, category, stage, team, source URL).",
       close: "Close",
+      followOnX: "Follow on X",
+      shopGumroad: "Gumroad shop",
+      profileMeta: (f, g, t) => `${f} followers · ${g} following · ${t} posts`,
       categories: {
         "image-video": "image-video",
         "writing-research": "writing-research",
@@ -155,10 +172,9 @@
       submitCase: "提交案例",
       submitTitle: "提交案例",
       submitReviewNote: "人工审核后收录 — 提交不会自动上线。",
-      submitHintCopy:
-        "本站为静态站。请复制 JSON 发给维护者，或在配置邮箱后使用邮件提交。",
-      submitHintMailto: "可用邮件发送，或复制 JSON 供维护者粘贴进 cases.json。",
-      submitHintFormspree: "可通过 Formspree 发送，也可复制 JSON 备份。",
+      submitHintCopy: "静态站 — 复制 JSON 或邮件发给维护者。",
+      submitHintMailto: "邮件提交，或复制 JSON 写入 cases.json。",
+      submitHintFormspree: "Formspree 发送，或复制 JSON 备份。",
       fName: "产品名称",
       fOneLiner: "一句话介绍（idea）",
       fRevenue: "收入",
@@ -182,6 +198,9 @@
       formspreeFail: "发送失败。请改用「复制为 JSON」。",
       formMissing: "请填写必填项（名称、idea、分类、进程、团队、来源链接）。",
       close: "关闭",
+      followOnX: "在 X 上关注",
+      shopGumroad: "Gumroad 店铺",
+      profileMeta: (f, g, t) => `${f} 关注者 · ${g} 正在关注 · ${t} 帖子`,
       categories: {
         "image-video": "图像/视频",
         "writing-research": "写作/研究",
@@ -264,6 +283,10 @@
     fFounder: document.getElementById("f-founder"),
     fContact: document.getElementById("f-contact"),
     fNotes: document.getElementById("f-notes"),
+    profileMeta: document.getElementById("profile-meta"),
+    profileBio: document.getElementById("profile-bio"),
+    profileName: document.getElementById("profile-name"),
+    profileAvatarImg: document.getElementById("profile-avatar-img"),
   };
 
   function t() {
@@ -531,6 +554,28 @@
     render();
   }
 
+
+  function fillOwnerProfile() {
+    const dict = t();
+    const x = OWNER_X;
+    if (els.profileName) els.profileName.textContent = x.name;
+    if (els.profileBio) els.profileBio.textContent = x.description;
+    if (els.profileMeta && typeof dict.profileMeta === "function") {
+      els.profileMeta.textContent = dict.profileMeta(x.followers, x.following, x.tweets);
+    }
+    if (els.profileAvatarImg && x.profile_image_url) {
+      els.profileAvatarImg.src = x.profile_image_url;
+      els.profileAvatarImg.alt = x.name;
+    }
+    const handleLink = document.getElementById("profile-handle-link");
+    if (handleLink) {
+      handleLink.href = x.profile_url;
+      handleLink.textContent = "@" + x.username;
+    }
+    const follow = document.getElementById("profile-follow");
+    if (follow) follow.href = x.profile_url;
+  }
+
   function applyStaticI18n() {
     const dict = t();
     document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
@@ -564,6 +609,8 @@
 
     els.langEn.classList.toggle("active", lang === "en");
     els.langZh.classList.toggle("active", lang === "zh");
+
+    fillOwnerProfile();
 
     // Submit form category/stage/team option labels
     if (els.fCategory) {
