@@ -2,7 +2,7 @@
   "as_of": "2026-11-04",
   "currency": "USD",
   "unit": "per_1M_tokens",
-  "notes": "Public standard list prices only (not Batch/Flex/Fast unless noted). Verify on provider docs before quoting. Updated periodically.",
+  "notes": "Public standard list prices only (not Batch/Flex/Fast unless noted). USD per 1M tokens. Chinese vendors: Alibaba international where available; Z.AI international USD; Kimi platform USD; Xiaomi MiMo overseas USD; MiniMax.io USD. Verify on provider docs before quoting. Updated periodically.",
   "models": [
     {
       "id": "openai-gpt-4o",
@@ -373,6 +373,276 @@
       "context": 1000000,
       "source_url": "https://docs.x.ai/developers/pricing",
       "notes": "Short context <200K; ≥200K is $2.50/$5. Cached $0.20"
+    },
+    {
+      "id": "alibaba-qwen-max",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen-max",
+      "input": 1.6,
+      "output": 6.4,
+      "context": 32768,
+      "source_url": "https://www.alibabacloud.com/help/en/model-studio/qwen-max",
+      "notes": "International (Singapore) list USD/1M; China (Beijing) list $0.345/$1.377. Batch 50% where supported."
+    },
+    {
+      "id": "alibaba-qwen-plus",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen-plus",
+      "input": 0.4,
+      "output": 1.2,
+      "context": 1000000,
+      "source_url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "notes": "International ≤256K input tier; non-thinking output $1.2, thinking output $4. Higher tiers 256K–1M: $1.2 in / $3.6–$12 out."
+    },
+    {
+      "id": "alibaba-qwen-flash",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen-flash",
+      "input": 0.05,
+      "output": 0.4,
+      "context": 1000000,
+      "source_url": "https://www.alibabacloud.com/help/en/model-studio/qwen-flash",
+      "notes": "International ≤256K; successor to turbo-class speed tier (qwen-turbo not listed on current intl pricing). 256K–1M: $0.25/$2."
+    },
+    {
+      "id": "alibaba-qwen3.7-plus",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen3.7-plus",
+      "input": 0.4,
+      "output": 1.6,
+      "context": 1000000,
+      "source_url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "notes": "International ≤256K list; output same non-thinking/thinking at $1.6. 256K–1M: $1.2/$4.8. Promo discounts may apply."
+    },
+    {
+      "id": "alibaba-qwen3.7-max",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen3.7-max",
+      "input": 2.5,
+      "output": 7.5,
+      "context": 1000000,
+      "source_url": "https://docs.qwencloud.com/developer-guides/getting-started/model-prices",
+      "notes": "International list ≤1M; non-thinking and thinking same rate."
+    },
+    {
+      "id": "alibaba-qwen3.7-flash",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen3.7-flash",
+      "input": 0.03,
+      "output": 0.13,
+      "context": 1000000,
+      "source_url": "https://www.alibabacloud.com/help/en/model-studio/model-pricing",
+      "notes": "International ≤32K tier. 32K–256K $0.10/$0.40; 256K–1M $0.20/$0.80."
+    },
+    {
+      "id": "alibaba-qwen3.8-max",
+      "provider": "Alibaba (DashScope)",
+      "model": "qwen3.8-max",
+      "input": 2.0,
+      "output": 6.0,
+      "context": 1000000,
+      "source_url": "https://docs.qwencloud.com/developer-guides/getting-started/model-prices",
+      "notes": "International list ≤1M (QwenCloud/Model Studio)."
+    },
+    {
+      "id": "zhipu-glm-5.3",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-5.3",
+      "input": 1.4,
+      "output": 4.4,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "Z.AI international USD/1M; cached input $0.26. China BigModel CNY prices differ."
+    },
+    {
+      "id": "zhipu-glm-5.3-flash",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-5.3-Flash",
+      "input": 0.15,
+      "output": 0.5,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.03."
+    },
+    {
+      "id": "zhipu-glm-5.3-flashx",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-5.3-FlashX",
+      "input": 0.37,
+      "output": 1.25,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.075."
+    },
+    {
+      "id": "zhipu-glm-5.2",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-5.2",
+      "input": 1.4,
+      "output": 4.4,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.26."
+    },
+    {
+      "id": "zhipu-glm-5",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-5",
+      "input": 1.0,
+      "output": 3.2,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.2."
+    },
+    {
+      "id": "zhipu-glm-4.7",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.7",
+      "input": 0.6,
+      "output": 2.2,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.11."
+    },
+    {
+      "id": "zhipu-glm-4.6",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.6",
+      "input": 0.6,
+      "output": 2.2,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.11."
+    },
+    {
+      "id": "zhipu-glm-4.5",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.5",
+      "input": 0.6,
+      "output": 2.2,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.11."
+    },
+    {
+      "id": "zhipu-glm-4.5-air",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.5-Air",
+      "input": 0.2,
+      "output": 1.1,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.03."
+    },
+    {
+      "id": "zhipu-glm-4.7-flashx",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.7-FlashX",
+      "input": 0.07,
+      "output": 0.4,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "USD/1M; cached input $0.01."
+    },
+    {
+      "id": "zhipu-glm-4.7-flash",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.7-Flash",
+      "input": 0.0,
+      "output": 0.0,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "Listed Free on Z.AI pricing (input/output/cache)."
+    },
+    {
+      "id": "zhipu-glm-4.5-flash",
+      "provider": "Zhipu (Z.AI)",
+      "model": "GLM-4.5-Flash",
+      "input": 0.0,
+      "output": 0.0,
+      "context": null,
+      "source_url": "https://docs.z.ai/guides/overview/pricing",
+      "notes": "Listed Free on Z.AI pricing (input/output/cache)."
+    },
+    {
+      "id": "moonshot-kimi-k3.1-pro",
+      "provider": "Moonshot (Kimi)",
+      "model": "kimi-k3.1-pro",
+      "input": 2.0,
+      "output": 10.0,
+      "context": 1048576,
+      "source_url": "https://platform.kimi.ai/",
+      "notes": "USD/MTok; cache write $2, cache hit $0.20. moonshot-v1 family retired Aug 31 2026."
+    },
+    {
+      "id": "moonshot-kimi-k3.1-pro-highspeed",
+      "provider": "Moonshot (Kimi)",
+      "model": "kimi-k3.1-pro-highspeed",
+      "input": 4.0,
+      "output": 20.0,
+      "context": 1048576,
+      "source_url": "https://platform.kimi.ai/",
+      "notes": "USD/MTok; cache write $4, cache hit $0.20."
+    },
+    {
+      "id": "moonshot-kimi-k3",
+      "provider": "Moonshot (Kimi)",
+      "model": "kimi-k3",
+      "input": 3.0,
+      "output": 15.0,
+      "context": 1048576,
+      "source_url": "https://platform.kimi.ai/",
+      "notes": "USD/MTok; cache write $3, cache hit $0.30. Batch 60% of standard for supported K3 models."
+    },
+    {
+      "id": "xiaomi-mimo-v2.6-pro",
+      "provider": "Xiaomi (MiMo)",
+      "model": "mimo-v2.6-pro",
+      "input": 0.435,
+      "output": 0.87,
+      "context": 1000000,
+      "source_url": "https://mimo.mi.com/docs/zh-CN/pricing",
+      "notes": "Overseas USD/1M (cache-miss input). Cache hit $0.0036. CNY domestic: ¥3/¥6. V2.5 retired 2026-10-21."
+    },
+    {
+      "id": "xiaomi-mimo-v2.6-flash",
+      "provider": "Xiaomi (MiMo)",
+      "model": "mimo-v2.6-flash",
+      "input": 0.14,
+      "output": 0.28,
+      "context": 1000000,
+      "source_url": "https://mimo.mi.com/docs/zh-CN/pricing",
+      "notes": "Overseas USD/1M (cache-miss input). Cache hit $0.0028. CNY domestic: ¥1/¥2."
+    },
+    {
+      "id": "xiaomi-mimo-v2.6-pro-ultraspeed",
+      "provider": "Xiaomi (MiMo)",
+      "model": "mimo-v2.6-pro-ultraspeed",
+      "input": 4.35,
+      "output": 8.7,
+      "context": 1000000,
+      "source_url": "https://mimo.mi.com/docs/zh-CN/pricing",
+      "notes": "Overseas USD/1M (cache-miss). Cache hit $0.036. No batch. CNY domestic ¥30/¥60."
+    },
+    {
+      "id": "minimax-m3.1-flash",
+      "provider": "MiniMax",
+      "model": "MiniMax-M3.1-Flash",
+      "input": 0.15,
+      "output": 0.6,
+      "context": 1000000,
+      "source_url": "https://platform.minimax.io/docs/pricing/overview",
+      "notes": "USD/1M; prompt cache read $0.015. CN platform (minimax.cn) lists ¥1/¥4."
+    },
+    {
+      "id": "minimax-m3",
+      "provider": "MiniMax",
+      "model": "MiniMax-M3",
+      "input": 0.3,
+      "output": 1.2,
+      "context": 1000000,
+      "source_url": "https://platform.minimax.io/docs/pricing/overview",
+      "notes": "USD/1M for ≤512K input after permanent 50% off (list $0.60/$2.40). >512K discounted $0.60/$2.40. Priority tier 1.5×."
     }
   ]
 }

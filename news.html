@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI model news — aimrr.app</title>
+  <meta name="description" content="Daily-oriented AI model news feed with emphasis on free and open-weight releases." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.aimrr.app/news.html" />
+  <meta property="og:title" content="AI model news — aimrr.app" />
+  <meta property="og:description" content="Free-model and frontier AI news with source links." />
+  <meta property="og:url" content="https://www.aimrr.app/news.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .meta-line { color: var(--muted); font-size: 0.88rem; margin: 0.35rem 0 0; }
+    .tool-lang { display: inline-flex; gap: 0.35rem; margin-left: auto; }
+    .tool-lang button { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 0.35rem 0.7rem; font: inherit; font-size: 0.82rem; cursor: pointer; }
+    .tool-lang button.active { border-color: #6ea8fe; background: rgba(110,168,254,0.12); }
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .news-list { display: grid; gap: 0.85rem; margin-top: 1rem; }
+    .news-card { border: 1px solid var(--border); background: var(--surface); border-radius: 12px; padding: 0.95rem 1.05rem; }
+    .news-card h2 { margin: 0 0 0.35rem; font-size: 1.05rem; line-height: 1.35; }
+    .news-card h2 a { color: inherit; text-decoration: none; }
+    .news-card h2 a:hover { text-decoration: underline; }
+    .news-meta { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.45rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.55rem; }
+    .tag { font-size: 0.72rem; padding: 0.12rem 0.45rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .tag.free-model { border-color: #3dd68c; color: #3dd68c; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="layout">
+      <main class="main" style="grid-column: 1 / -1">
+        <nav class="site-nav" aria-label="Site">
+          <a class="site-nav-link" href="./" data-i18n="navCases">Cases</a>
+          <a class="site-nav-link" href="pricing.html" data-i18n="navPricing">LLM pricing</a>
+          <a class="site-nav-link" href="compare.html" data-i18n="navCompare">API gateways</a>
+          <a class="site-nav-link is-active" href="news.html" data-i18n="navNews">News</a>
+        </nav>
+        <header>
+          <div class="header-row">
+            <div class="eyebrow" data-i18n="eyebrow">Free models · frontier · static JSON</div>
+            <div class="tool-lang" role="group" aria-label="Language">
+              <button type="button" id="lang-en" class="active" data-lang="en">EN</button>
+              <button type="button" id="lang-zh" data-lang="zh">中文</button>
+            </div>
+          </div>
+          <h1 data-i18n="title">AI model news</h1>
+          <p class="subtitle" data-i18n="subtitle">Especially free / open-weight releases people actually click — with source links.</p>
+          <p class="value-prop" data-i18n="valueProp">Short digest from public pages. Prefer official announcements; always open the source.</p>
+          <p class="meta-line" id="as-of"></p>
+        </header>
+
+        <section class="controls" aria-label="Filters">
+          <label>
+            <span data-i18n="search">Search</span>
+            <input id="q" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Title, tags…" autocomplete="off" />
+          </label>
+          <label>
+            <span data-i18n="tag">Tag</span>
+            <select id="tag">
+              <option value="" data-i18n="all">All</option>
+              <option value="free-model">free-model</option>
+              <option value="open-weight">open-weight</option>
+              <option value="frontier">frontier</option>
+              <option value="api-pricing">api-pricing</option>
+            </select>
+          </label>
+        </section>
+
+        <p class="meta-line" id="count"></p>
+        <div class="news-list" id="news-list"></div>
+        <div class="empty hidden" id="empty" data-i18n="empty">No news match.</div>
+
+        <p class="disclaimer"><strong data-i18n="noteLabel">Note:</strong> <span data-i18n="noteBody">Loaded from news.json. Not financial advice; verify every link.</span></p>
+        <footer>
+          <div class="footer-mirror">
+            <span data-i18n="mirror">Mirror / CN backup: </span>
+            <a href="https://ai-indie-revenue-cases.jinxingle1983.workers.dev/news.html">workers.dev</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const I18N = {
+      en: {
+        navCases: "Cases", navPricing: "LLM pricing", navCompare: "API gateways", navNews: "News",
+        eyebrow: "Free models · frontier · static JSON",
+        title: "AI model news",
+        subtitle: "Especially free / open-weight releases people actually click — with source links.",
+        valueProp: "Short digest from public pages. Prefer official announcements; always open the source.",
+        search: "Search", searchPlaceholder: "Title, tags…", tag: "Tag", all: "All",
+        empty: "No news match.", noteLabel: "Note:",
+        noteBody: "Loaded from news.json. Not financial advice; verify every link.",
+        mirror: "Mirror / CN backup: ",
+        asOf: (d, n) => `As of ${d} · ${n} items`,
+        showing: (n, t) => `Showing ${n} of ${t}`,
+        source: "Source"
+      },
+      zh: {
+        navCases: "案例", navPricing: "大模型报价", navCompare: "API 聚合", navNews: "资讯",
+        eyebrow: "免费模型 · 前沿 · 静态 JSON",
+        title: "AI 模型资讯",
+        subtitle: "优先免费 / 开源权重相关新闻 — 都带原文链接。",
+        valueProp: "公开页面短摘要。优先官方通告，点进原文核对。",
+        search: "搜索", searchPlaceholder: "标题、标签…", tag: "标签", all: "全部",
+        empty: "没有匹配项。", noteLabel: "说明：",
+        noteBody: "数据来自 news.json。非投资建议，请核对原文。",
+        mirror: "国内备用镜像：",
+        asOf: (d, n) => `截至 ${d} · ${n} 条`,
+        showing: (n, t) => `显示 ${n} / ${t}`,
+        source: "来源"
+      }
+    };
+
+    let lang = localStorage.getItem("aimrr-lang") || "en";
+    let items = [];
+    let meta = { as_of: "" };
+    const els = {
+      q: document.getElementById("q"),
+      tag: document.getElementById("tag"),
+      list: document.getElementById("news-list"),
+      empty: document.getElementById("empty"),
+      asOf: document.getElementById("as-of"),
+      count: document.getElementById("count"),
+      langEn: document.getElementById("lang-en"),
+      langZh: document.getElementById("lang-zh")
+    };
+    function t() { return I18N[lang] || I18N.en; }
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function escapeAttr(s) { return escapeHtml(s); }
+    function applyI18n() {
+      const dict = t();
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.placeholder = dict[key];
+      });
+      els.langEn.classList.toggle("active", lang === "en");
+      els.langZh.classList.toggle("active", lang === "zh");
+      render();
+    }
+    function filtered() {
+      const q = (els.q.value || "").trim().toLowerCase();
+      const tag = els.tag.value;
+      return items.filter((it) => {
+        if (tag && !(it.tags || []).includes(tag)) return false;
+        if (!q) return true;
+        const hay = [it.title, it.title_zh, it.summary, it.summary_zh, it.source, ...(it.tags || [])].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+    }
+    function render() {
+      const dict = t();
+      const list = filtered().slice().sort((a, b) => String(b.date || "").localeCompare(String(a.date || "")));
+      els.asOf.textContent = dict.asOf(meta.as_of || "—", items.length);
+      els.count.textContent = dict.showing(list.length, items.length);
+      if (!list.length) {
+        els.list.innerHTML = "";
+        els.empty.classList.remove("hidden");
+        return;
+      }
+      els.empty.classList.add("hidden");
+      els.list.innerHTML = list.map((it) => {
+        const title = lang === "zh" && it.title_zh ? it.title_zh : (it.title || "");
+        const summary = lang === "zh" && it.summary_zh ? it.summary_zh : (it.summary || "");
+        const tags = (it.tags || []).map((tg) => `<span class="tag ${escapeAttr(tg)}">${escapeHtml(tg)}</span>`).join("");
+        return `<article class="news-card">
+          <h2><a href="${escapeAttr(it.url || "#")}" rel="noopener noreferrer" target="_blank">${escapeHtml(title)}</a></h2>
+          <p class="news-meta">${escapeHtml(it.date || "")} · ${escapeHtml(it.source || "")} · <a href="${escapeAttr(it.url || "#")}" rel="noopener noreferrer" target="_blank">${dict.source}</a></p>
+          <p>${escapeHtml(summary)}</p>
+          <div class="tag-row">${tags}</div>
+        </article>`;
+      }).join("");
+    }
+    els.q.addEventListener("input", render);
+    els.tag.addEventListener("change", render);
+    els.langEn.addEventListener("click", () => { lang = "en"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+    els.langZh.addEventListener("click", () => { lang = "zh"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+    fetch("news.json", { cache: "no-store" })
+      .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then((data) => {
+        meta = data;
+        items = Array.isArray(data.items) ? data.items : [];
+        applyI18n();
+      })
+      .catch((err) => {
+        els.asOf.textContent = "Failed to load news.json: " + err.message;
+        els.empty.classList.remove("hidden");
+      });
+  })();
+  </script>
+</body>
+</html>

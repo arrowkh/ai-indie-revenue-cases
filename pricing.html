@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LLM model pricing — aimrr.app</title>
-  <meta name="description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (per 1M tokens)." />
+  <meta name="description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, xAI, Qwen, GLM, Kimi, MiMo, and MiniMax (per 1M tokens)." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.aimrr.app/pricing.html" />
   <meta property="og:title" content="LLM model pricing — aimrr.app" />
-  <meta property="og:description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (per 1M tokens)." />
+  <meta property="og:description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, xAI, Qwen, GLM, Kimi, MiMo, and MiniMax (per 1M tokens)." />
   <meta property="og:url" content="https://www.aimrr.app/pricing.html" />
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -30,7 +30,8 @@
         <nav class="site-nav" aria-label="Site">
           <a class="site-nav-link" href="./" data-i18n="navCases">Cases</a>
           <a class="site-nav-link is-active" href="pricing.html" data-i18n="navPricing">LLM pricing</a>
-          <a class="site-nav-link" href="compare.html" data-i18n="navCompare">Marketplaces</a>
+          <a class="site-nav-link" href="compare.html" data-i18n="navCompare">API gateways</a>
+          <a class="site-nav-link" href="news.html" data-i18n="navNews">News</a>
         </nav>
         <header>
           <div class="header-row">
@@ -41,7 +42,7 @@
             </div>
           </div>
           <h1 data-i18n="title">LLM model pricing</h1>
-          <p class="subtitle" data-i18n="subtitle">Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (USD per 1M tokens).</p>
+          <p class="subtitle" data-i18n="subtitle">Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, xAI, Qwen, GLM, Kimi, MiMo, and MiniMax (USD per 1M tokens).</p>
           <p class="value-prop" data-i18n="valueProp">Standard API list prices only — not live quotes. Always check the source before budgeting.</p>
           <p class="meta-line" id="as-of"></p>
         </header>
@@ -93,10 +94,10 @@
   (function () {
     const I18N = {
       en: {
-        navCases: "Cases", navPricing: "LLM pricing", navCompare: "Marketplaces",
+        navCases: "Cases", navPricing: "LLM pricing", navCompare: "API gateways",
         eyebrow: "Public list · static JSON",
         title: "LLM model pricing",
-        subtitle: "Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (USD per 1M tokens).",
+        subtitle: "Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, xAI, Qwen, GLM, Kimi, MiMo, and MiniMax (USD per 1M tokens).",
         valueProp: "Standard API list prices only — not live quotes. Always check the source before budgeting.",
         search: "Search", searchPlaceholder: "Model, notes…", provider: "Provider", all: "All",
         colProvider: "Provider", colModel: "Model", colInput: "Input $/1M", colOutput: "Output $/1M",
@@ -109,10 +110,10 @@
         source: "Docs"
       },
       zh: {
-        navCases: "案例", navPricing: "大模型报价", navCompare: "聚合/市集",
+        navCases: "案例", navPricing: "大模型报价", navCompare: "API 聚合",
         eyebrow: "公开标价 · 静态 JSON",
         title: "大模型 API 价格对比",
-        subtitle: "对比 OpenAI、Anthropic、Google、DeepSeek、xAI 公开标价（美元 / 百万 tokens）。",
+        subtitle: "对比 OpenAI、Anthropic、Google、DeepSeek、xAI、通义 Qwen、智谱 GLM、Kimi、MiMo、MiniMax 公开列表价（美元/百万 tokens）。",
         valueProp: "仅收录标准 API 公开价，非实时报价。预算前请核对官方文档。",
         search: "搜索", searchPlaceholder: "模型、备注…", provider: "厂商", all: "全部",
         colProvider: "厂商", colModel: "模型", colInput: "输入 $/1M", colOutput: "输出 $/1M",

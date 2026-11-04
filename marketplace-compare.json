@@ -1,117 +1,114 @@
 {
   "as_of": "2026-11-04",
-  "notes": "Lightweight aggregator/marketplace listings for indie AI products. Fees and featured prices change often — verify on each site before selling.",
+  "notes": "API aggregators / inference gateways (unified model APIs), not AI tool directories. Fees and model catalogs change often — verify on each source.",
   "markets": [
+    {
+      "id": "openrouter",
+      "name": "OpenRouter",
+      "url": "https://openrouter.ai",
+      "type": "aggregator",
+      "focus": "Unified multi-provider LLM API router (600+ models)",
+      "pricing": "pass-through + credit fee",
+      "fee_note": "No markup on provider list inference. Platform fee on credit purchases: Standard 5.5% (min $0.80); Business 8%; crypto 5%. BYOK: $25k/mo list-price inference free on Standard/Business, then 5%.",
+      "models_note": "600+ models / 80+ providers; auto-routing and preferred vendor selection on paid plans.",
+      "as_of": "2026-11-04",
+      "source_url": "https://openrouter.ai/pricing"
+    },
+    {
+      "id": "opencode",
+      "name": "OpenCode (Go)",
+      "url": "https://opencode.ai",
+      "type": "aggregator",
+      "focus": "Terminal coding agent + Console Go subscription for curated open-weight model access",
+      "pricing": "subscription",
+      "fee_note": "Go $10/mo and Go Plus $40/mo for usage allowances on curated models (top-up credits if needed). Not a raw per-token pass-through catalog like OpenRouter.",
+      "models_note": "Curated agentic models (e.g. Kimi K3 / K3.1 Pro, DeepSeek, GLM Flash, MiniMax, MiMo Flash) with monthly allowance tables on pricing page.",
+      "as_of": "2026-11-04",
+      "source_url": "https://opencode.ai/pricing"
+    },
+    {
+      "id": "together",
+      "name": "Together AI",
+      "url": "https://www.together.ai",
+      "type": "inference",
+      "focus": "Serverless + dedicated inference for open and partner models",
+      "pricing": "per-token",
+      "fee_note": "Pay-per-token serverless rates by model (e.g. listed Kimi K3, GLM-5.3, MiniMax M3 on pricing page). Dedicated GPUs billed hourly.",
+      "models_note": "Broad open-weight + frontier hosted catalog; OpenAI-compatible APIs.",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.together.ai/pricing"
+    },
+    {
+      "id": "fireworks",
+      "name": "Fireworks AI",
+      "url": "https://fireworks.ai",
+      "type": "inference",
+      "focus": "Production serverless inference with Standard/Priority/Batch/Spot modes",
+      "pricing": "per-token",
+      "fee_note": "Prepaid credits; serverless from ~$0.05/1M input on highlighted models. Cached input often ≤50% of input; Priority tiers listed separately.",
+      "models_note": "Open + frontier serverless catalog (Kimi, Qwen, GLM, DeepSeek, MiniMax, etc.).",
+      "as_of": "2026-11-04",
+      "source_url": "https://fireworks.ai/pricing"
+    },
+    {
+      "id": "groq",
+      "name": "Groq",
+      "url": "https://groq.com",
+      "type": "inference",
+      "focus": "Low-latency LPU inference cloud",
+      "pricing": "per-token",
+      "fee_note": "Pay-as-you-go token pricing by model on GroqCloud (see console/docs pricing). Optimized for speed rather than cheapest $/token.",
+      "models_note": "Selected open models on GroqCloud; OpenAI-compatible endpoints.",
+      "as_of": "2026-11-04",
+      "source_url": "https://groq.com/pricing"
+    },
+    {
+      "id": "deepinfra",
+      "name": "DeepInfra",
+      "url": "https://deepinfra.com",
+      "type": "inference",
+      "focus": "Low-cost serverless inference across many open models",
+      "pricing": "per-token",
+      "fee_note": "Per-model $/1M input & output on pricing page; often undercuts lab list on open weights. GPU rentals also available.",
+      "models_note": "Large catalog (DeepSeek, Kimi, Qwen, Llama, Gemma, etc.).",
+      "as_of": "2026-11-04",
+      "source_url": "https://deepinfra.com/pricing"
+    },
+    {
+      "id": "novita",
+      "name": "Novita AI",
+      "url": "https://novita.ai",
+      "type": "inference",
+      "focus": "Budget Model APIs + GPU / serverless endpoints",
+      "pricing": "per-token",
+      "fee_note": "Model API token rates on pricing page; batch inference introductory 50% off input/output for supported models. GPU resources billed separately.",
+      "models_note": "Serverless model endpoints plus dedicated/GPU options.",
+      "as_of": "2026-11-04",
+      "source_url": "https://novita.ai/pricing"
+    },
+    {
+      "id": "siliconflow",
+      "name": "SiliconFlow",
+      "url": "https://www.siliconflow.com",
+      "type": "inference",
+      "focus": "CN/global GenAI cloud — LLMs, image, video, speech APIs",
+      "pricing": "per-token",
+      "fee_note": "Pay-as-you-go model APIs (OpenAI/Anthropic-compatible). Exact $/¥ rates are in console model list — verify before quoting.",
+      "models_note": "Broad multimodal model catalog via SiliconFlow / cloud.siliconflow.com.",
+      "as_of": "2026-11-04",
+      "source_url": "https://docs.siliconflow.cn/en/userguide/introduction"
+    },
     {
       "id": "gumroad",
       "name": "Gumroad",
       "url": "https://gumroad.com",
       "type": "marketplace",
-      "focus": "Digital products, memberships, indie tools",
+      "focus": "Digital products / indie SaaS checkout (not an LLM gateway)",
       "pricing": "commission",
-      "fee_note": "10% + $0.50 per direct/profile sale; 30% flat via Discover marketplace (processing included on Discover).",
+      "fee_note": "10% + $0.50 per direct sale; 30% via Discover. Kept as seller channel, not an API aggregator.",
+      "models_note": "N/A — product marketplace.",
       "as_of": "2026-11-04",
       "source_url": "https://gumroad.com/pricing"
-    },
-    {
-      "id": "promptbase",
-      "name": "PromptBase",
-      "url": "https://promptbase.com",
-      "type": "marketplace",
-      "focus": "AI prompts and agent skills",
-      "pricing": "commission",
-      "fee_note": "0% via your referral/seller link; 20% via marketplace listings.",
-      "as_of": "2026-11-04",
-      "source_url": "https://promptbase.com/sell"
-    },
-    {
-      "id": "theresanaiforthat",
-      "name": "There's An AI For That",
-      "url": "https://theresanaiforthat.com",
-      "type": "directory",
-      "focus": "Large AI tool directory / discovery",
-      "pricing": "freemium",
-      "fee_note": "Browse free; paid/featured listing options for visibility (check current submit/pricing page).",
-      "as_of": "2026-11-04",
-      "source_url": "https://theresanaiforthat.com"
-    },
-    {
-      "id": "futurepedia",
-      "name": "Futurepedia",
-      "url": "https://www.futurepedia.io",
-      "type": "directory",
-      "focus": "AI tools directory with categories and filters",
-      "pricing": "freemium",
-      "fee_note": "Free browsing; listing/featured plans for tool makers (verify current submit terms).",
-      "as_of": "2026-11-04",
-      "source_url": "https://www.futurepedia.io"
-    },
-    {
-      "id": "producthunt",
-      "name": "Product Hunt",
-      "url": "https://www.producthunt.com",
-      "type": "directory",
-      "focus": "Product launches and community ranking",
-      "pricing": "freemium",
-      "fee_note": "Free to launch; Ship / ads / featured options are paid (see Product Hunt for makers).",
-      "as_of": "2026-11-04",
-      "source_url": "https://www.producthunt.com"
-    },
-    {
-      "id": "alternativeto-ai",
-      "name": "AlternativeTo (AI)",
-      "url": "https://alternativeto.net",
-      "type": "directory",
-      "focus": "Software alternatives including AI tools",
-      "pricing": "freemium",
-      "fee_note": "Community listings free; Premium/ads for promoted placement.",
-      "as_of": "2026-11-04",
-      "source_url": "https://alternativeto.net"
-    },
-    {
-      "id": "aitools-directory",
-      "name": "AI Tools Directory style hubs",
-      "url": "https://www.aitoolsdirectory.com",
-      "type": "directory",
-      "focus": "Generic AI tool aggregation / SEO discovery",
-      "pricing": "freemium",
-      "fee_note": "Often free submit + paid featured slots; terms vary by site.",
-      "as_of": "2026-11-04",
-      "source_url": "https://www.aitoolsdirectory.com"
-    },
-    {
-      "id": "toolify",
-      "name": "Toolify.ai",
-      "url": "https://www.toolify.ai",
-      "type": "directory",
-      "focus": "AI tools ranking and traffic estimates",
-      "pricing": "freemium",
-      "fee_note": "Free listing options plus paid promotion packages (verify current pricing).",
-      "as_of": "2026-11-04",
-      "source_url": "https://www.toolify.ai"
-    },
-    {
-      "id": "lemonsqueezy",
-      "name": "Lemon Squeezy",
-      "url": "https://www.lemonsqueezy.com",
-      "type": "marketplace",
-      "focus": "Digital products & SaaS payments (Merchant of Record)",
-      "pricing": "commission",
-      "fee_note": "5% + $0.50 per transaction (no monthly ecommerce fee); some payments may incur additional fees.",
-      "as_of": "2026-11-04",
-      "source_url": "https://www.lemonsqueezy.com/pricing"
-    },
-    {
-      "id": "itchio",
-      "name": "itch.io",
-      "url": "https://itch.io",
-      "type": "marketplace",
-      "focus": "Indie games, tools, digital goods",
-      "pricing": "commission",
-      "fee_note": "Seller-set revenue share (default open; you choose cut). Payment processor fees still apply.",
-      "as_of": "2026-11-04",
-      "source_url": "https://itch.io/docs/creators/faq"
     }
-  ],
-  "items": []
+  ]
 }

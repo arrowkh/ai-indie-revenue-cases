@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Marketplace comparison — aimrr.app</title>
-  <meta name="description" content="Lightweight fees and listing notes for Gumroad, PromptBase, AI directories, and similar indie marketplaces." />
+  <title>API aggregators comparison — aimrr.app</title>
+  <meta name="description" content="Compare OpenRouter, OpenCode, Together, Fireworks, Groq, DeepInfra and other LLM API gateways — fees and billing notes." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.aimrr.app/compare.html" />
-  <meta property="og:title" content="Marketplace comparison — aimrr.app" />
-  <meta property="og:description" content="Lightweight fees and listing notes for Gumroad, PromptBase, AI directories, and similar indie marketplaces." />
+  <meta property="og:title" content="API aggregators comparison — aimrr.app" />
+  <meta property="og:description" content="Compare OpenRouter, OpenCode, Together, Fireworks, Groq, DeepInfra and other LLM API gateways — fees and billing notes." />
   <meta property="og:url" content="https://www.aimrr.app/compare.html" />
   <link rel="stylesheet" href="styles.css" />
   <style>
@@ -27,19 +27,20 @@
         <nav class="site-nav" aria-label="Site">
           <a class="site-nav-link" href="./" data-i18n="navCases">Cases</a>
           <a class="site-nav-link" href="pricing.html" data-i18n="navPricing">LLM pricing</a>
-          <a class="site-nav-link is-active" href="compare.html" data-i18n="navCompare">Marketplaces</a>
+          <a class="site-nav-link is-active" href="compare.html" data-i18n="navCompare">API gateways</a>
+          <a class="site-nav-link" href="news.html" data-i18n="navNews">News</a>
         </nav>
         <header>
           <div class="header-row">
-            <div class="eyebrow" data-i18n="eyebrow">Directories · marketplaces · static JSON</div>
+            <div class="eyebrow" data-i18n="eyebrow">API aggregators · gateways · static JSON</div>
             <div class="tool-lang" role="group" aria-label="Language">
               <button type="button" id="lang-en" class="active" data-lang="en">EN</button>
               <button type="button" id="lang-zh" data-lang="zh">中文</button>
             </div>
           </div>
-          <h1 data-i18n="title">Marketplace & aggregator comparison</h1>
-          <p class="subtitle" data-i18n="subtitle">Lightweight fees and listing notes for Gumroad, PromptBase, and AI directories.</p>
-          <p class="value-prop" data-i18n="valueProp">For indie builders picking where to list or sell — fees change often; check the source.</p>
+          <h1 data-i18n="title">API aggregators & gateways</h1>
+          <p class="subtitle" data-i18n="subtitle">Fees, markup, and billing notes for OpenRouter, OpenCode, and inference gateways.</p>
+          <p class="value-prop" data-i18n="valueProp">For builders picking a unified LLM API router or inference host — fees change often; check the source.</p>
           <p class="meta-line" id="as-of"></p>
         </header>
 
@@ -52,8 +53,9 @@
             <span data-i18n="type">Type</span>
             <select id="type">
               <option value="" data-i18n="all">All</option>
+              <option value="aggregator" data-i18n="typeAggregator">Aggregator</option>
+              <option value="inference" data-i18n="typeInference">Inference host</option>
               <option value="marketplace" data-i18n="typeMarketplace">Marketplace</option>
-              <option value="directory" data-i18n="typeDirectory">Directory</option>
             </select>
           </label>
         </section>
@@ -77,7 +79,7 @@
         </div>
         <div class="empty hidden" id="empty" data-i18n="empty">No listings match.</div>
 
-        <p class="disclaimer"><strong data-i18n="noteLabel">Note:</strong> <span data-i18n="noteBody">Data loads from marketplace-compare.json. Directory featured prices and marketplace cuts change frequently.</span></p>
+        <p class="disclaimer"><strong data-i18n="noteLabel">Note:</strong> <span data-i18n="noteBody">Data loads from marketplace-compare.json. Focus is API aggregators/gateways; fees change frequently.</span></p>
         <footer>
           <div class="footer-mirror">
             <span data-i18n="mirror">Mirror / CN backup: </span>
@@ -91,34 +93,34 @@
   (function () {
     const I18N = {
       en: {
-        navCases: "Cases", navPricing: "LLM pricing", navCompare: "Marketplaces",
-        eyebrow: "Directories · marketplaces · static JSON",
-        title: "Marketplace & aggregator comparison",
-        subtitle: "Lightweight fees and listing notes for Gumroad, PromptBase, and AI directories.",
-        valueProp: "For indie builders picking where to list or sell — fees change often; check the source.",
+        navCases: "Cases", navPricing: "LLM pricing", navCompare: "API gateways", navNews: "News",
+        eyebrow: "API aggregators · gateways · static JSON",
+        title: "API aggregators & gateways",
+        subtitle: "Fees, markup, and billing notes for OpenRouter, OpenCode, and inference gateways.",
+        valueProp: "For builders picking a unified LLM API router or inference host — fees change often; check the source.",
         search: "Search", searchPlaceholder: "Name, focus…", type: "Type", all: "All",
-        typeMarketplace: "Marketplace", typeDirectory: "Directory",
+        typeAggregator: "Aggregator", typeInference: "Inference host", typeMarketplace: "Marketplace",
         colName: "Name", colType: "Type", colFocus: "Focus", colPricing: "Pricing",
         colFee: "Fee / notes", colSource: "Source",
         empty: "No listings match.", noteLabel: "Note:",
-        noteBody: "Data loads from marketplace-compare.json. Directory featured prices and marketplace cuts change frequently.",
+        noteBody: "Data loads from marketplace-compare.json. Focus is API aggregators/gateways; fees change frequently.",
         mirror: "Mirror / CN backup: ",
         asOf: (d, n) => `As of ${d} · ${n} listings`,
         showing: (n, t) => `Showing ${n} of ${t}`,
         source: "Source"
       },
       zh: {
-        navCases: "案例", navPricing: "大模型报价", navCompare: "聚合/市集",
-        eyebrow: "目录 · 市集 · 静态 JSON",
-        title: "聚合站 / 市集对比",
-        subtitle: "Gumroad、PromptBase 与常见 AI 目录的费用与收录说明。",
-        valueProp: "给独立开发者选上架渠道用 — 费率常变，请核对来源。",
+        navCases: "案例", navPricing: "大模型报价", navCompare: "API 聚合", navNews: "资讯",
+        eyebrow: "API 聚合 · 网关 · 静态 JSON",
+        title: "API 聚合 / 推理网关对比",
+        subtitle: "OpenRouter、OpenCode、Together、Fireworks 等统一模型 API 的费率与计费说明。",
+        valueProp: "给开发者选统一 LLM 路由或推理托管用 — 费率常变，请核对来源。",
         search: "搜索", searchPlaceholder: "名称、定位…", type: "类型", all: "全部",
-        typeMarketplace: "市集", typeDirectory: "目录",
+        typeAggregator: "聚合路由", typeInference: "推理托管", typeMarketplace: "市集",
         colName: "名称", colType: "类型", colFocus: "定位", colPricing: "收费模式",
         colFee: "费率 / 备注", colSource: "来源",
         empty: "没有匹配项。", noteLabel: "说明：",
-        noteBody: "数据来自 marketplace-compare.json。目录推广价与市集抽成经常变动。",
+        noteBody: "数据来自 marketplace-compare.json，重点是 API 聚合/网关；费率经常变动。",
         mirror: "国内备用镜像：",
         asOf: (d, n) => `截至 ${d} · ${n} 条`,
         showing: (n, t) => `显示 ${n} / ${t}`,

@@ -1,0 +1,126 @@
+{
+  "as_of": "2026-11-04",
+  "notes": "Public AI model news with emphasis on free / open-weight releases. Summaries are short; follow source_url. Never treat as investment advice.",
+  "items": [
+    {
+      "id": "2026-01-19-glm-4.7-flash-open",
+      "title": "Z.ai open-sources GLM-4.7-Flash (free weights)",
+      "title_zh": "智谱开源免费权重 GLM-4.7-Flash",
+      "summary": "Z.ai announces GLM-4.7-Flash as an open-source 30B-A3B MoE model for lightweight local deployment (vLLM/SGLang).",
+      "summary_zh": "智谱宣布开源 GLM-4.7-Flash（30B-A3B MoE），面向轻量本地部署，支持 vLLM/SGLang。",
+      "url": "https://www.zhipuai.cn/en/news/148",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "glm"
+      ],
+      "source": "Z.ai / Zhipu",
+      "date": "2026-01-19"
+    },
+    {
+      "id": "hf-glm-4.7-flash",
+      "title": "GLM-4.7-Flash weights on Hugging Face",
+      "title_zh": "Hugging Face 可下载 GLM-4.7-Flash 权重",
+      "summary": "Official HF card for zai-org/GLM-4.7-Flash with benchmarks and local serve notes.",
+      "summary_zh": "Hugging Face 模型卡 zai-org/GLM-4.7-Flash，含评测与本地推理说明。",
+      "url": "https://huggingface.co/zai-org/GLM-4.7-Flash",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "glm"
+      ],
+      "source": "Hugging Face",
+      "date": "2026-01-19"
+    },
+    {
+      "id": "2026-11-03-qwen-open-weight-promise",
+      "title": "Qwen restates open-weight commitment; Max stays closed",
+      "title_zh": "通义重申开源承诺，Max 仍闭源 API",
+      "summary": "Coverage of Alibaba/Qwen’s open-weight stats and that Max-tier models remain API-only while smaller tiers stay downloadable.",
+      "summary_zh": "报道梳理通义开源数据与承诺：Max 档仍为 API-only，较小档位继续开源权重。",
+      "url": "http://rits.shanghai.nyu.edu/ai/qwen-restates-its-open-weight-promise-max-tier-still-closed/",
+      "tags": [
+        "free-model",
+        "open-weight",
+        "qwen",
+        "frontier"
+      ],
+      "source": "NYU Shanghai RITS AI notes",
+      "date": "2026-11-03"
+    },
+    {
+      "id": "z-ai-pricing-free-flash",
+      "title": "Z.AI lists GLM-4.7-Flash / GLM-4.5-Flash API as Free",
+      "title_zh": "Z.AI 价表：GLM-4.7-Flash / 4.5-Flash API 免费",
+      "summary": "Current Z.AI developer pricing table marks GLM-4.7-Flash and GLM-4.5-Flash input/output/cache as Free (verify before relying on free tier).",
+      "summary_zh": "Z.AI 官方价表将 GLM-4.7-Flash、GLM-4.5-Flash 的输入/输出/缓存标为 Free（使用前请再核验）。",
+      "url": "https://docs.z.ai/guides/overview/pricing",
+      "tags": [
+        "free-model",
+        "api-pricing",
+        "glm"
+      ],
+      "source": "Z.AI docs",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "2026-11-02-glm-5.3-flashx-legal",
+      "title": "GLM-5.3-FlashX-Legal appears in November model trackers",
+      "title_zh": "11 月追踪到 GLM-5.3-FlashX-Legal 上线",
+      "summary": "Third-party model-update trackers list GLM-5.3-FlashX-Legal (Z.ai) around Nov 2, 2026 — hosted/API oriented, not confirmed open-weight.",
+      "summary_zh": "第三方模型更新榜在 2026-11-02 左右列出 GLM-5.3-FlashX-Legal（智谱），偏托管/API，非确认开源权重。",
+      "url": "https://llmbenchmark.ai/model-updates",
+      "tags": [
+        "frontier",
+        "glm"
+      ],
+      "source": "LLMBenchmark model updates",
+      "date": "2026-11-02"
+    },
+    {
+      "id": "minimax-m3.1-flash-launch",
+      "title": "MiniMax launches M3.1 Flash with $0.15/$0.60 API pricing",
+      "title_zh": "MiniMax 发布 M3.1 Flash，API $0.15/$0.60",
+      "summary": "MiniMax research post for MiniMax-M3.1-Flash; official intl pricing lists $0.15 input / $0.60 output per 1M tokens.",
+      "summary_zh": "MiniMax 发布 M3.1 Flash；国际站价表为每百万 tokens 输入 $0.15 / 输出 $0.60。",
+      "url": "https://www.minimax.io/blog/minimax-m31f",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "minimax"
+      ],
+      "source": "MiniMax",
+      "date": "2026-10-19"
+    },
+    {
+      "id": "kimi-k3.1-pro-platform",
+      "title": "Kimi K3.1 Pro live on Moonshot API platform",
+      "title_zh": "月之暗面 Kimi K3.1 Pro 上线 API",
+      "summary": "Kimi API Platform highlights K3.1 Pro at $2/$10 per MTok (cache hit $0.20); moonshot-v1 family previously retired.",
+      "summary_zh": "Kimi API 平台主推 K3.1 Pro（$2/$10 / MTok，缓存命中 $0.20）；旧 moonshot-v1 已下线。",
+      "url": "https://platform.kimi.ai/",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "kimi"
+      ],
+      "source": "Kimi API Platform",
+      "date": "2026-11-04"
+    },
+    {
+      "id": "xiaomi-mimo-v2.6-pricing",
+      "title": "Xiaomi MiMo V2.6 API pricing (V2.5 retired)",
+      "title_zh": "小米 MiMo V2.6 API 定价（V2.5 已下线）",
+      "summary": "Official MiMo docs: V2.5 offline since 2026-10-21; V2.6 Pro/Flash publish CNY and overseas USD token rates.",
+      "summary_zh": "官方文档：V2.5 已于 2026-10-21 下线；V2.6 Pro/Flash 公布国内人民币与海外美元按量价。",
+      "url": "https://mimo.mi.com/docs/zh-CN/pricing",
+      "tags": [
+        "frontier",
+        "api-pricing",
+        "mimo"
+      ],
+      "source": "Xiaomi MiMo docs",
+      "date": "2026-10-20"
+    }
+  ]
+}
