@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Curated AI indie and startup revenue cases — idea, revenue, category, and stage with sources." />
+  <title>AI Indie Revenue Cases</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="header-top">
+        <div class="eyebrow" data-i18n="eyebrow">Curated · sourced · static</div>
+        <div class="lang-toggle view-toggle" role="group" aria-label="Language">
+          <button type="button" id="lang-en" data-lang="en">EN</button>
+          <button type="button" id="lang-zh" data-lang="zh">中文</button>
+        </div>
+      </div>
+      <h1 data-i18n="title">AI Indie Revenue Cases</h1>
+      <p class="subtitle" data-i18n="subtitle">
+        Public revenue snapshots from indie AI products and a few scaled ceiling cases.
+      </p>
+    </header>
+
+    <section class="controls" aria-label="Filters">
+      <label>
+        <span data-i18n="search">Search</span>
+        <input id="q" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Name, idea, founder…" autocomplete="off" />
+      </label>
+      <label>
+        <span data-i18n="category">Category</span>
+        <select id="category">
+          <option value="" data-i18n="all">All</option>
+          <option value="image-video">image-video</option>
+          <option value="writing-research">writing-research</option>
+          <option value="chatbots">chatbots</option>
+          <option value="marketing-seo">marketing-seo</option>
+          <option value="agents">agents</option>
+          <option value="devtools">devtools</option>
+          <option value="productivity">productivity</option>
+          <option value="vertical">vertical</option>
+        </select>
+      </label>
+      <label>
+        <span data-i18n="stage">Stage</span>
+        <select id="stage">
+          <option value="" data-i18n="all">All</option>
+          <option value="mvp">mvp</option>
+          <option value="early">early</option>
+          <option value="growing">growing</option>
+          <option value="breakout">breakout</option>
+          <option value="scaled">scaled</option>
+          <option value="exited">exited</option>
+          <option value="declining">declining</option>
+        </select>
+      </label>
+      <label>
+        <span data-i18n="sort">Sort</span>
+        <select id="sort">
+          <option value="revenue-desc" data-i18n="sortRevenueDesc">Revenue (high → low)</option>
+          <option value="revenue-asc" data-i18n="sortRevenueAsc">Revenue (low → high)</option>
+          <option value="name-asc" data-i18n="sortNameAsc">Name A–Z</option>
+          <option value="as_of-desc" data-i18n="sortAsOfDesc">Newest as_of</option>
+        </select>
+      </label>
+    </section>
+
+    <div class="meta-row">
+      <div id="count">Loading…</div>
+      <div class="view-toggle" role="group" aria-label="View mode">
+        <button type="button" id="view-cards" class="active" data-i18n="cards">Cards</button>
+        <button type="button" id="view-table" data-i18n="table">Table</button>
+      </div>
+    </div>
+
+    <div id="cards" class="cards"></div>
+    <div id="table-wrap" class="table-wrap hidden">
+      <table>
+        <thead>
+          <tr>
+            <th data-i18n="thName">Name</th>
+            <th data-i18n="thIdea">Idea</th>
+            <th data-i18n="thRevenue">Revenue</th>
+            <th data-i18n="thCategory">Category</th>
+            <th data-i18n="thStage">Stage</th>
+            <th data-i18n="thAsOf">as_of</th>
+            <th data-i18n="thSource">Source</th>
+          </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+    <div id="empty" class="empty hidden" data-i18n="empty">No cases match these filters.</div>
+
+    <p class="disclaimer">
+      <strong data-i18n="disclaimerLabel">Disclaimer:</strong>
+      <span data-i18n="disclaimerBody"> Revenues are mostly self-reported or press-cited and may be outdated. Treat figures as snapshots, not audited financials. Always open the linked source before citing a number.</span>
+    </p>
+
+    <footer>
+      <span data-i18n="footerMore">More AI / Grok Bot packs → </span><a href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank">jinxingle.gumroad.com</a>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

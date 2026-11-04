@@ -1,0 +1,331 @@
+/* AI Indie Revenue Cases — minimal dark theme */
+:root {
+  --bg: #0f1115;
+  --surface: #171a21;
+  --surface-2: #1e2330;
+  --border: #2a3142;
+  --text: #e8ecf4;
+  --muted: #9aa3b5;
+  --accent: #6ea8fe;
+  --accent-soft: rgba(110, 168, 254, 0.12);
+  --ok: #5dcea2;
+  --warn: #e6b35c;
+  --chip: #252b3a;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  --radius: 14px;
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  background:
+    radial-gradient(1200px 600px at 10% -10%, #1a2740 0%, transparent 55%),
+    radial-gradient(900px 500px at 100% 0%, #1a2220 0%, transparent 45%),
+    var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.wrap { width: min(1100px, calc(100% - 2rem)); margin: 0 auto; }
+
+header { padding: 2.4rem 0 1.2rem; }
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.header-top .eyebrow {
+  margin-bottom: 0;
+}
+
+.lang-toggle {
+  flex-shrink: 0;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.28rem 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  max-width: 46rem;
+}
+
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+select, input[type="search"] {
+  width: 100%;
+  appearance: none;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.55rem 0.7rem;
+  font: inherit;
+  font-size: 0.92rem;
+}
+
+select:focus, input[type="search"]:focus {
+  outline: 2px solid rgba(110, 168, 254, 0.35);
+  border-color: var(--accent);
+}
+
+.meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.view-toggle {
+  display: inline-flex;
+  gap: 0.35rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem;
+}
+
+.view-toggle button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.view-toggle button.active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem 1.05rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.card:hover {
+  border-color: #3a4560;
+  transform: translateY(-1px);
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.one-liner {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  min-height: 2.7em;
+}
+
+.revenue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ok);
+  letter-spacing: -0.01em;
+}
+
+.revenue-range {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-top: 0.15rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  background: var(--chip);
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 0.18rem 0.55rem;
+  font-size: 0.75rem;
+}
+
+.chip.stage-declining { color: #f0a0a0; }
+.chip.stage-exited { color: var(--warn); }
+.chip.stage-scaled,
+.chip.stage-breakout { color: var(--ok); }
+
+.card-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  padding-top: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.notes {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 860px;
+  font-size: 0.9rem;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: var(--surface-2);
+  position: sticky;
+  top: 0;
+}
+
+tr:last-child td { border-bottom: 0; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+.empty {
+  padding: 2.5rem 1rem;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.disclaimer {
+  margin: 1.5rem 0 0.75rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: rgba(230, 179, 92, 0.08);
+  color: #e8d7b0;
+  font-size: 0.86rem;
+}
+
+footer {
+  margin: 1.25rem 0 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+}
+
+.hidden { display: none !important; }
+
+@media (max-width: 860px) {
+  .controls { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 560px) {
+  .controls { grid-template-columns: 1fr; }
+  .card-top { flex-direction: column; }
+}
