@@ -302,13 +302,45 @@
     return 0;
   }
 
+  function shortRevenueFromRange(range, c) {
+    if (!range) return null;
+    // e.g. "Widely cited peak ~$300K/mo sales ..." → "~$300K/mo peak"
+    const peakMo = range.match(/~?\$?\s*([\d.,]+)\s*([KkMm])\s*\/?\s*mo/i);
+    if (peakMo) {
+      const num = peakMo[1].replace(/,/g, "");
+      const unit = peakMo[2].toUpperCase() === "M" ? "M" : "K";
+      const tilde = /~/.test(range) ? "~" : "";
+      const peak = /peak/i.test(range) ? " peak" : "";
+      return tilde + "$" + num + unit + "/mo" + peak;
+    }
+    if (c && c.id === "headshotpro") return "~$300K/mo peak";
+    const money = range.match(/~?\$\s*([\d.,]+\s*[KkMm]\+?)/);
+    if (money) {
+      const tilde = range.trim().startsWith("~") ? "~" : "";
+      return tilde + "$" + money[1].replace(/\s+/g, "");
+    }
+    if (range.length > 28) return range.slice(0, 24).trim() + "…";
+    return range;
+  }
+
   function formatRevenue(c) {
     const dict = t();
     const unit = c.revenue_unit;
     const money = formatMoney(c.revenue);
     let main;
+    let range = c.revenue_range || "";
     if (!money) {
-      main = c.revenue_range || "n/a";
+      if (range) {
+        const short = shortRevenueFromRange(range, c);
+        if (short && short !== range) {
+          return { main: short, range };
+        }
+        main = short || range;
+        // Avoid duplicating the same long string as secondary
+        if (main === range) range = "";
+      } else {
+        main = "n/a";
+      }
     } else if (unit === "MRR") {
       main = money + " MRR";
     } else if (unit === "ARR") {
@@ -321,7 +353,7 @@
     } else {
       main = money;
     }
-    return { main, range: c.revenue_range || "" };
+    return { main, range };
   }
 
   function oneLiner(c) {
