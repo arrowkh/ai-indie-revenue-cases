@@ -2,6 +2,14 @@
 (function () {
   const LANG_KEY = "ai-cases-lang";
 
+  // Owner contact for mailto submissions. Leave empty to disable mailto.
+  // Example: "you@domain.com"
+  const OWNER_EMAIL = "jinxingle1983@gmail.com";
+
+  // Optional Formspree form id (e.g. "xyzabcde"). Leave empty to disable.
+  // When set, POSTs JSON to https://formspree.io/f/<id>
+  const FORMSPREE_ID = "";
+
   const I18N = {
     en: {
       title: "AI Indie Revenue Cases",
@@ -21,6 +29,9 @@
       sortAsOfDesc: "Newest as_of",
       cards: "Cards",
       table: "Table",
+      prev: "Previous",
+      next: "Next",
+      pageOf: (n, m) => `Page ${n} of ${m}`,
       count: (n) => (n === 1 ? "1 case" : n + " cases"),
       loading: "Loading…",
       loadFailed: "Failed to load",
@@ -43,6 +54,36 @@
       asOf: "as_of",
       exitSuffix: " exit (at ~$10K MRR)",
       replyguyRev: "~$10K MRR → 6-fig exit",
+      submitCase: "Submit a case",
+      submitTitle: "Submit a case",
+      submitReviewNote: "Reviewed before publish — submissions are not auto-listed.",
+      submitHintCopy:
+        "This site is static. Copy the JSON and send it to the maintainer, or use email if configured.",
+      submitHintMailto: "You can email the submission, or copy JSON for the maintainer to paste into cases.json.",
+      submitHintFormspree: "Send via Formspree, or copy JSON as a backup.",
+      fName: "Product name",
+      fOneLiner: "One-liner (idea)",
+      fRevenue: "Revenue",
+      fRevenueUnit: "Unit",
+      fCategory: "Category",
+      fStage: "Stage",
+      fTeam: "Team size",
+      fSource: "Source URL",
+      fFounder: "Founder",
+      fContact: "Your email",
+      fNotes: "Notes",
+      optional: "(optional)",
+      copyJson: "Copy as JSON",
+      sendMailto: "Email submission",
+      sendFormspree: "Send via Formspree",
+      copied: "JSON copied — paste into cases.json after review.",
+      copyFailed: "Could not copy. Select and copy manually.",
+      mailtoOpened: "Mail client opened with your submission.",
+      mailtoDisabled: "Email not configured — use Copy as JSON.",
+      formspreeOk: "Sent. We’ll review before publishing.",
+      formspreeFail: "Send failed. Please Copy as JSON instead.",
+      formMissing: "Please fill required fields (name, idea, category, stage, team, source URL).",
+      close: "Close",
       categories: {
         "image-video": "image-video",
         "writing-research": "writing-research",
@@ -87,6 +128,9 @@
       sortAsOfDesc: "最新 as_of",
       cards: "卡片",
       table: "表格",
+      prev: "上一页",
+      next: "下一页",
+      pageOf: (n, m) => `第 ${n} / ${m} 页`,
       count: (n) => n + " 条案例",
       loading: "加载中…",
       loadFailed: "加载失败",
@@ -108,6 +152,36 @@
       asOf: "截至",
       exitSuffix: " 退出（约 $10K MRR）",
       replyguyRev: "~$10K MRR → 六位数退出",
+      submitCase: "提交案例",
+      submitTitle: "提交案例",
+      submitReviewNote: "人工审核后收录 — 提交不会自动上线。",
+      submitHintCopy:
+        "本站为静态站。请复制 JSON 发给维护者，或在配置邮箱后使用邮件提交。",
+      submitHintMailto: "可用邮件发送，或复制 JSON 供维护者粘贴进 cases.json。",
+      submitHintFormspree: "可通过 Formspree 发送，也可复制 JSON 备份。",
+      fName: "产品名称",
+      fOneLiner: "一句话介绍（idea）",
+      fRevenue: "收入",
+      fRevenueUnit: "单位",
+      fCategory: "分类",
+      fStage: "进程",
+      fTeam: "团队规模",
+      fSource: "来源链接",
+      fFounder: "创始人",
+      fContact: "你的邮箱",
+      fNotes: "备注",
+      optional: "（可选）",
+      copyJson: "复制为 JSON",
+      sendMailto: "邮件提交",
+      sendFormspree: "通过 Formspree 发送",
+      copied: "已复制 JSON — 审核后粘贴进 cases.json。",
+      copyFailed: "复制失败，请手动选择复制。",
+      mailtoOpened: "已打开邮件客户端（含提交内容）。",
+      mailtoDisabled: "未配置邮箱 — 请用「复制为 JSON」。",
+      formspreeOk: "已发送。我们会人工审核后再收录。",
+      formspreeFail: "发送失败。请改用「复制为 JSON」。",
+      formMissing: "请填写必填项（名称、idea、分类、进程、团队、来源链接）。",
+      close: "关闭",
       categories: {
         "image-video": "图像/视频",
         "writing-research": "写作/研究",
@@ -149,6 +223,8 @@
   let lang = detectLang();
   let cases = [];
   let view = "cards";
+  const PAGE_SIZE = 12;
+  let page = 1;
 
   const els = {
     q: document.getElementById("q"),
@@ -164,6 +240,30 @@
     viewTable: document.getElementById("view-table"),
     langEn: document.getElementById("lang-en"),
     langZh: document.getElementById("lang-zh"),
+    pager: document.getElementById("pager"),
+    pagerPrev: document.getElementById("pager-prev"),
+    pagerNext: document.getElementById("pager-next"),
+    pagerStatus: document.getElementById("pager-status"),
+    btnSubmit: document.getElementById("btn-submit"),
+    modal: document.getElementById("submit-modal"),
+    submitClose: document.getElementById("submit-close"),
+    submitForm: document.getElementById("submit-form"),
+    submitHint: document.getElementById("submit-hint"),
+    submitStatus: document.getElementById("submit-status"),
+    btnCopyJson: document.getElementById("btn-copy-json"),
+    btnMailto: document.getElementById("btn-mailto"),
+    btnFormspree: document.getElementById("btn-formspree"),
+    fName: document.getElementById("f-name"),
+    fOneLiner: document.getElementById("f-one-liner"),
+    fRevenue: document.getElementById("f-revenue"),
+    fRevenueUnit: document.getElementById("f-revenue-unit"),
+    fCategory: document.getElementById("f-category"),
+    fStage: document.getElementById("f-stage"),
+    fTeam: document.getElementById("f-team"),
+    fSource: document.getElementById("f-source"),
+    fFounder: document.getElementById("f-founder"),
+    fContact: document.getElementById("f-contact"),
+    fNotes: document.getElementById("f-notes"),
   };
 
   function t() {
@@ -350,17 +450,53 @@
       .join("");
   }
 
+  function totalPages(n) {
+    return Math.max(1, Math.ceil(n / PAGE_SIZE));
+  }
+
+  function updatePager(listLength) {
+    const dict = t();
+    const pages = totalPages(listLength);
+    if (page > pages) page = pages;
+    if (page < 1) page = 1;
+    const show = listLength > 0 && pages > 1;
+    els.pager.classList.toggle("hidden", !show);
+    els.pagerPrev.textContent = dict.prev;
+    els.pagerNext.textContent = dict.next;
+    els.pagerStatus.textContent = dict.pageOf(page, pages);
+    els.pagerPrev.disabled = page <= 1;
+    els.pagerNext.disabled = page >= pages;
+  }
+
+  function pageSlice(list) {
+    const start = (page - 1) * PAGE_SIZE;
+    return list.slice(start, start + PAGE_SIZE);
+  }
+
   function render() {
     const list = filtered();
+    const pages = totalPages(list.length);
+    if (page > pages) page = pages;
+    if (page < 1) page = 1;
+
     els.count.textContent = t().count(list.length);
     const empty = list.length === 0;
     els.empty.classList.toggle("hidden", !empty);
     els.cards.classList.toggle("hidden", view !== "cards" || empty);
     els.tableWrap.classList.toggle("hidden", view !== "table" || empty);
+
+    updatePager(list.length);
+
     if (!empty) {
-      if (view === "cards") renderCards(list);
-      else renderTable(list);
+      const slice = pageSlice(list);
+      if (view === "cards") renderCards(slice);
+      else renderTable(slice);
     }
+  }
+
+  function resetPageAndRender() {
+    page = 1;
+    render();
   }
 
   function applyStaticI18n() {
@@ -396,6 +532,252 @@
 
     els.langEn.classList.toggle("active", lang === "en");
     els.langZh.classList.toggle("active", lang === "zh");
+
+    // Submit form category/stage/team option labels
+    if (els.fCategory) {
+      Array.from(els.fCategory.options).forEach((opt) => {
+        opt.textContent = dict.categories[opt.value] || opt.value;
+      });
+    }
+    if (els.fStage) {
+      Array.from(els.fStage.options).forEach((opt) => {
+        opt.textContent = dict.stages[opt.value] || opt.value;
+      });
+    }
+    if (els.fTeam) {
+      Array.from(els.fTeam.options).forEach((opt) => {
+        opt.textContent = dict.teams[opt.value] || opt.value;
+      });
+    }
+    if (els.submitClose) {
+      els.submitClose.setAttribute("aria-label", dict.close);
+    }
+    updateSubmitChannelUi();
+  }
+
+
+  function slugify(name) {
+    return String(name || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9\u4e00-\u9fff]+/g, "-")
+      .replace(/^-+|-+$/g, "")
+      .slice(0, 48) || "case";
+  }
+
+  function todayAsOf() {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, "0");
+    return y + "-" + m;
+  }
+
+  function readSubmitDraft() {
+    const name = (els.fName.value || "").trim();
+    const one_liner = (els.fOneLiner.value || "").trim();
+    const source_url = (els.fSource.value || "").trim();
+    const category = els.fCategory.value;
+    const stage = els.fStage.value;
+    const team_size = els.fTeam.value;
+    const founder = (els.fFounder.value || "").trim();
+    const notes = (els.fNotes.value || "").trim();
+    const contact = (els.fContact.value || "").trim();
+    const revRaw = (els.fRevenue.value || "").trim();
+    const revenue_unit = els.fRevenueUnit.value;
+    const revenue = revRaw === "" ? null : Number(revRaw);
+
+    return {
+      name,
+      one_liner,
+      source_url,
+      category,
+      stage,
+      team_size,
+      founder,
+      notes,
+      contact,
+      revenue: Number.isFinite(revenue) ? revenue : null,
+      revenue_unit,
+    };
+  }
+
+  function validateSubmit(draft) {
+    if (
+      !draft.name ||
+      !draft.one_liner ||
+      !draft.source_url ||
+      !draft.category ||
+      !draft.stage ||
+      !draft.team_size
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  function buildCaseJson(draft) {
+    const obj = {
+      id: slugify(draft.name),
+      name: draft.name,
+      one_liner: draft.one_liner,
+      revenue: draft.revenue,
+      revenue_unit: draft.revenue_unit || "MRR",
+      revenue_range: draft.revenue == null ? "" : undefined,
+      category: draft.category,
+      stage: draft.stage,
+      team_size: draft.team_size,
+      founder: draft.founder || "",
+      source_url: draft.source_url,
+      evidence: "self_reported",
+      as_of: todayAsOf(),
+      notes: draft.notes || "",
+      status: "pending_review",
+    };
+    if (obj.revenue_range === undefined) delete obj.revenue_range;
+    if (draft.contact) obj.submitter_email = draft.contact;
+    return obj;
+  }
+
+  function setSubmitStatus(msg, isError) {
+    if (!els.submitStatus) return;
+    els.submitStatus.textContent = msg || "";
+    els.submitStatus.classList.toggle("is-error", !!isError);
+  }
+
+  function updateSubmitChannelUi() {
+    const dict = t();
+    const hasMail = !!(OWNER_EMAIL && String(OWNER_EMAIL).trim());
+    const hasFormspree = !!(FORMSPREE_ID && String(FORMSPREE_ID).trim());
+
+    if (els.btnMailto) {
+      els.btnMailto.disabled = !hasMail;
+      els.btnMailto.title = hasMail ? "" : dict.mailtoDisabled;
+    }
+    if (els.btnFormspree) {
+      els.btnFormspree.classList.toggle("hidden", !hasFormspree);
+    }
+    if (els.submitHint) {
+      if (hasFormspree) els.submitHint.textContent = dict.submitHintFormspree;
+      else if (hasMail) els.submitHint.textContent = dict.submitHintMailto;
+      else els.submitHint.textContent = dict.submitHintCopy;
+    }
+  }
+
+  function openSubmitModal() {
+    if (!els.modal) return;
+    els.modal.classList.remove("hidden");
+    els.modal.removeAttribute("hidden");
+    document.body.style.overflow = "hidden";
+    setSubmitStatus("");
+    updateSubmitChannelUi();
+    applyStaticI18n();
+    setTimeout(() => {
+      try {
+        els.fName.focus();
+      } catch (_) {}
+    }, 50);
+  }
+
+  function closeSubmitModal() {
+    if (!els.modal) return;
+    els.modal.classList.add("hidden");
+    els.modal.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+    setSubmitStatus("");
+  }
+
+  async function copyCaseJson() {
+    const dict = t();
+    const draft = readSubmitDraft();
+    if (!validateSubmit(draft)) {
+      setSubmitStatus(dict.formMissing, true);
+      return;
+    }
+    const obj = buildCaseJson(draft);
+    const text = JSON.stringify(obj, null, 2);
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        document.body.removeChild(ta);
+      }
+      setSubmitStatus(dict.copied, false);
+    } catch (err) {
+      console.error(err);
+      setSubmitStatus(dict.copyFailed, true);
+    }
+  }
+
+  function sendMailto() {
+    const dict = t();
+    const email = (OWNER_EMAIL || "").trim();
+    if (!email) {
+      setSubmitStatus(dict.mailtoDisabled, true);
+      return;
+    }
+    const draft = readSubmitDraft();
+    if (!validateSubmit(draft)) {
+      setSubmitStatus(dict.formMissing, true);
+      return;
+    }
+    const obj = buildCaseJson(draft);
+    const subject = "[AI Cases] New submission: " + draft.name;
+    const body =
+      "New case submission (pending review)\n\n" +
+      JSON.stringify(obj, null, 2) +
+      (draft.contact ? "\n\nSubmitter contact: " + draft.contact : "");
+    const href =
+      "mailto:" +
+      encodeURIComponent(email).replace(/%40/g, "@") +
+      "?subject=" +
+      encodeURIComponent(subject) +
+      "&body=" +
+      encodeURIComponent(body);
+    window.location.href = href;
+    setSubmitStatus(dict.mailtoOpened, false);
+  }
+
+  async function sendFormspree() {
+    const dict = t();
+    const id = (FORMSPREE_ID || "").trim();
+    if (!id) return;
+    const draft = readSubmitDraft();
+    if (!validateSubmit(draft)) {
+      setSubmitStatus(dict.formMissing, true);
+      return;
+    }
+    const obj = buildCaseJson(draft);
+    els.btnFormspree.disabled = true;
+    try {
+      const res = await fetch("https://formspree.io/f/" + encodeURIComponent(id), {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "[AI Cases] " + draft.name,
+          case: obj,
+          submitter_email: draft.contact || "",
+          message: "Pending review case submission",
+        }),
+      });
+      if (!res.ok) throw new Error("Formspree " + res.status);
+      setSubmitStatus(dict.formspreeOk, false);
+    } catch (err) {
+      console.error(err);
+      setSubmitStatus(dict.formspreeFail, true);
+    } finally {
+      els.btnFormspree.disabled = false;
+    }
   }
 
   function setLang(next) {
@@ -403,6 +785,7 @@
     try {
       localStorage.setItem(LANG_KEY, lang);
     } catch (_) {}
+    page = 1;
     applyStaticI18n();
     render();
   }
@@ -415,15 +798,49 @@
   }
 
   ["input", "change"].forEach((evt) => {
-    els.q.addEventListener(evt, render);
-    els.category.addEventListener(evt, render);
-    els.stage.addEventListener(evt, render);
-    els.sort.addEventListener(evt, render);
+    els.q.addEventListener(evt, resetPageAndRender);
+    els.category.addEventListener(evt, resetPageAndRender);
+    els.stage.addEventListener(evt, resetPageAndRender);
+    els.sort.addEventListener(evt, resetPageAndRender);
+  });
+  els.pagerPrev.addEventListener("click", () => {
+    if (page > 1) {
+      page -= 1;
+      render();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  });
+  els.pagerNext.addEventListener("click", () => {
+    page += 1;
+    render();
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
   els.viewCards.addEventListener("click", () => setView("cards"));
   els.viewTable.addEventListener("click", () => setView("table"));
   els.langEn.addEventListener("click", () => setLang("en"));
   els.langZh.addEventListener("click", () => setLang("zh"));
+
+  if (els.btnSubmit) els.btnSubmit.addEventListener("click", openSubmitModal);
+  if (els.submitClose) els.submitClose.addEventListener("click", closeSubmitModal);
+  if (els.modal) {
+    els.modal.querySelectorAll("[data-close-modal]").forEach((el) => {
+      el.addEventListener("click", closeSubmitModal);
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && els.modal && !els.modal.classList.contains("hidden")) {
+      closeSubmitModal();
+    }
+  });
+  if (els.btnCopyJson) els.btnCopyJson.addEventListener("click", () => { copyCaseJson(); });
+  if (els.btnMailto) els.btnMailto.addEventListener("click", sendMailto);
+  if (els.btnFormspree) els.btnFormspree.addEventListener("click", () => { sendFormspree(); });
+  if (els.submitForm) {
+    els.submitForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      copyCaseJson();
+    });
+  }
 
   applyStaticI18n();
   els.count.textContent = t().loading;

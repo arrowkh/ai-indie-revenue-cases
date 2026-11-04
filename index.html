@@ -3,9 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Curated AI indie and startup revenue cases — idea, revenue, category, and stage with sources." />
-  <title>AI Indie Revenue Cases</title>
+  <title>AI Indie Revenue Cases — Curated Startup &amp; Indie AI Revenue Snapshots</title>
+  <meta name="description" content="Browse curated AI indie and startup success cases: idea, public revenue (MRR/ARR), category, stage, and sources. Filter and search revenue snapshots from Photo AI, Chatbase, and more." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="jinxingle" />
+  <meta name="keywords" content="AI startups, indie hacker revenue, SaaS MRR, AI product cases, ChatGPT wrappers, indie AI" />
+  <!-- Canonical: after you have a custom domain, set e.g. https://cases.example.com/ -->
+  <link rel="canonical" href="./" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AI Indie Revenue Cases" />
+  <meta property="og:description" content="Curated AI indie &amp; startup revenue cases — idea, revenue, category, stage, and sources." />
+  <meta property="og:url" content="./" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="zh_CN" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="AI Indie Revenue Cases" />
+  <meta name="twitter:description" content="Curated AI indie &amp; startup revenue cases — idea, revenue, category, stage, and sources." />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "AI Indie Revenue Cases",
+        "description": "Curated AI indie and startup revenue cases with idea, revenue, category, stage, and sources.",
+        "url": "./",
+        "inLanguage": ["en", "zh"]
+      },
+      {
+        "@type": "ItemList",
+        "name": "AI indie revenue case list",
+        "description": "Public revenue snapshots from indie AI products and scaled ceiling cases.",
+        "itemListOrder": "https://schema.org/ItemListUnordered"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="wrap">
@@ -68,9 +104,12 @@
 
     <div class="meta-row">
       <div id="count">Loading…</div>
-      <div class="view-toggle" role="group" aria-label="View mode">
-        <button type="button" id="view-cards" class="active" data-i18n="cards">Cards</button>
-        <button type="button" id="view-table" data-i18n="table">Table</button>
+      <div class="meta-actions">
+        <button type="button" id="btn-submit" class="btn-submit" data-i18n="submitCase">Submit a case</button>
+        <div class="view-toggle" role="group" aria-label="View mode">
+          <button type="button" id="view-cards" class="active" data-i18n="cards">Cards</button>
+          <button type="button" id="view-table" data-i18n="table">Table</button>
+        </div>
       </div>
     </div>
 
@@ -93,6 +132,12 @@
     </div>
     <div id="empty" class="empty hidden" data-i18n="empty">No cases match these filters.</div>
 
+    <nav id="pager" class="pager hidden" aria-label="Pagination">
+      <button type="button" id="pager-prev" class="pager-btn">Previous</button>
+      <span id="pager-status" class="pager-status" aria-live="polite"></span>
+      <button type="button" id="pager-next" class="pager-btn">Next</button>
+    </nav>
+
     <p class="disclaimer">
       <strong data-i18n="disclaimerLabel">Disclaimer:</strong>
       <span data-i18n="disclaimerBody"> Revenues are mostly self-reported or press-cited and may be outdated. Treat figures as snapshots, not audited financials. Always open the linked source before citing a number.</span>
@@ -101,6 +146,100 @@
     <footer>
       <span data-i18n="footerMore">More AI / Grok Bot packs → </span><a href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank">jinxingle.gumroad.com</a>
     </footer>
+  </div>
+
+  <!-- Submit case modal (static: mailto / Formspree optional / Copy JSON) -->
+  <div id="submit-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="submit-title" hidden>
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="document">
+      <div class="modal-head">
+        <h2 id="submit-title" data-i18n="submitTitle">Submit a case</h2>
+        <button type="button" class="modal-close" id="submit-close" aria-label="Close">&times;</button>
+      </div>
+      <p class="submit-note" data-i18n="submitReviewNote">Reviewed before publish — submissions are not auto-listed.</p>
+      <form id="submit-form" novalidate>
+        <div class="form-grid">
+          <label class="full">
+            <span data-i18n="fName">Product name</span>
+            <input id="f-name" name="name" type="text" required autocomplete="organization" />
+          </label>
+          <label class="full">
+            <span data-i18n="fOneLiner">One-liner (idea)</span>
+            <input id="f-one-liner" name="one_liner" type="text" required maxlength="200" />
+          </label>
+          <label>
+            <span data-i18n="fRevenue">Revenue</span>
+            <input id="f-revenue" name="revenue" type="number" min="0" step="1" inputmode="numeric" placeholder="e.g. 10000" />
+          </label>
+          <label>
+            <span data-i18n="fRevenueUnit">Unit</span>
+            <select id="f-revenue-unit" name="revenue_unit">
+              <option value="MRR">MRR</option>
+              <option value="ARR">ARR</option>
+              <option value="last_30d">last_30d</option>
+              <option value="exit">exit</option>
+              <option value="other">other</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="fCategory">Category</span>
+            <select id="f-category" name="category" required>
+              <option value="image-video">image-video</option>
+              <option value="writing-research">writing-research</option>
+              <option value="chatbots">chatbots</option>
+              <option value="marketing-seo">marketing-seo</option>
+              <option value="agents">agents</option>
+              <option value="devtools">devtools</option>
+              <option value="productivity">productivity</option>
+              <option value="vertical">vertical</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="fStage">Stage</span>
+            <select id="f-stage" name="stage" required>
+              <option value="mvp">mvp</option>
+              <option value="early">early</option>
+              <option value="growing">growing</option>
+              <option value="breakout">breakout</option>
+              <option value="scaled">scaled</option>
+              <option value="exited">exited</option>
+              <option value="declining">declining</option>
+            </select>
+          </label>
+          <label>
+            <span data-i18n="fTeam">Team size</span>
+            <select id="f-team" name="team_size" required>
+              <option value="solo">solo</option>
+              <option value="2-5">2-5</option>
+              <option value="vc">vc</option>
+            </select>
+          </label>
+          <label class="full">
+            <span data-i18n="fSource">Source URL</span>
+            <input id="f-source" name="source_url" type="url" required placeholder="https://…" inputmode="url" />
+          </label>
+          <label>
+            <span data-i18n="fFounder">Founder <em data-i18n="optional">(optional)</em></span>
+            <input id="f-founder" name="founder" type="text" autocomplete="name" />
+          </label>
+          <label>
+            <span data-i18n="fContact">Your email <em data-i18n="optional">(optional)</em></span>
+            <input id="f-contact" name="contact_email" type="email" autocomplete="email" inputmode="email" />
+          </label>
+          <label class="full">
+            <span data-i18n="fNotes">Notes <em data-i18n="optional">(optional)</em></span>
+            <textarea id="f-notes" name="notes" rows="3" maxlength="500"></textarea>
+          </label>
+        </div>
+        <p class="submit-hint" id="submit-hint" data-i18n="submitHintCopy">No server on this static site — copy the JSON below and email/share it, or use mailto if configured.</p>
+        <div class="form-actions">
+          <button type="button" id="btn-copy-json" class="btn-primary" data-i18n="copyJson">Copy as JSON</button>
+          <button type="button" id="btn-mailto" class="btn-secondary" data-i18n="sendMailto" disabled>Email submission</button>
+          <button type="button" id="btn-formspree" class="btn-secondary hidden" data-i18n="sendFormspree">Send via Formspree</button>
+        </div>
+        <p class="submit-status" id="submit-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
   </div>
   <script src="app.js"></script>
 </body>
