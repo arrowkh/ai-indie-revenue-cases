@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LLM model pricing — aimrr.app</title>
+  <meta name="description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (per 1M tokens)." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.aimrr.app/pricing.html" />
+  <meta property="og:title" content="LLM model pricing — aimrr.app" />
+  <meta property="og:description" content="Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (per 1M tokens)." />
+  <meta property="og:url" content="https://www.aimrr.app/pricing.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .sort-btn { background: none; border: 0; color: inherit; font: inherit; text-transform: inherit; letter-spacing: inherit; cursor: pointer; padding: 0; }
+    .sort-btn::after { content: ""; margin-left: 0.25rem; opacity: 0.5; }
+    .sort-btn[data-dir="asc"]::after { content: "▲"; opacity: 1; }
+    .sort-btn[data-dir="desc"]::after { content: "▼"; opacity: 1; }
+    .meta-line { color: var(--muted); font-size: 0.88rem; margin: 0.35rem 0 0; }
+    .tool-lang { display: inline-flex; gap: 0.35rem; margin-left: auto; }
+    .tool-lang button { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 0.35rem 0.7rem; font: inherit; font-size: 0.82rem; cursor: pointer; }
+    .tool-lang button.active { border-color: #6ea8fe; background: rgba(110,168,254,0.12); }
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="layout">
+      <main class="main" style="grid-column: 1 / -1">
+        <nav class="site-nav" aria-label="Site">
+          <a class="site-nav-link" href="./" data-i18n="navCases">Cases</a>
+          <a class="site-nav-link is-active" href="pricing.html" data-i18n="navPricing">LLM pricing</a>
+          <a class="site-nav-link" href="compare.html" data-i18n="navCompare">Marketplaces</a>
+        </nav>
+        <header>
+          <div class="header-row">
+            <div class="eyebrow" data-i18n="eyebrow">Public list · static JSON</div>
+            <div class="tool-lang" role="group" aria-label="Language">
+              <button type="button" id="lang-en" class="active" data-lang="en">EN</button>
+              <button type="button" id="lang-zh" data-lang="zh">中文</button>
+            </div>
+          </div>
+          <h1 data-i18n="title">LLM model pricing</h1>
+          <p class="subtitle" data-i18n="subtitle">Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (USD per 1M tokens).</p>
+          <p class="value-prop" data-i18n="valueProp">Standard API list prices only — not live quotes. Always check the source before budgeting.</p>
+          <p class="meta-line" id="as-of"></p>
+        </header>
+
+        <section class="controls" aria-label="Filters">
+          <label>
+            <span data-i18n="search">Search</span>
+            <input id="q" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Model, notes…" autocomplete="off" />
+          </label>
+          <label>
+            <span data-i18n="provider">Provider</span>
+            <select id="provider">
+              <option value="" data-i18n="all">All</option>
+            </select>
+          </label>
+        </section>
+
+        <p class="meta-line" id="count"></p>
+
+        <div class="table-wrap" id="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="colProvider">Provider</th>
+                <th data-i18n="colModel">Model</th>
+                <th><button type="button" class="sort-btn" data-sort="input" data-i18n="colInput">Input $/1M</button></th>
+                <th><button type="button" class="sort-btn" data-sort="output" data-i18n="colOutput">Output $/1M</button></th>
+                <th data-i18n="colContext">Context</th>
+                <th data-i18n="colSource">Source</th>
+                <th data-i18n="colNotes">Notes</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+        <div class="empty hidden" id="empty" data-i18n="empty">No models match.</div>
+
+        <p class="disclaimer"><strong data-i18n="noteLabel">Note:</strong> <span data-i18n="noteBody">Prices load from llm-prices.json (standard tier). Batch / Flex / Fast / long-context tiers may differ.</span></p>
+        <footer>
+          <div class="footer-mirror">
+            <span data-i18n="mirror">Mirror / CN backup: </span>
+            <a href="https://ai-indie-revenue-cases.jinxingle1983.workers.dev/pricing.html">workers.dev</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const I18N = {
+      en: {
+        navCases: "Cases", navPricing: "LLM pricing", navCompare: "Marketplaces",
+        eyebrow: "Public list · static JSON",
+        title: "LLM model pricing",
+        subtitle: "Compare public list prices across OpenAI, Anthropic, Google, DeepSeek, and xAI (USD per 1M tokens).",
+        valueProp: "Standard API list prices only — not live quotes. Always check the source before budgeting.",
+        search: "Search", searchPlaceholder: "Model, notes…", provider: "Provider", all: "All",
+        colProvider: "Provider", colModel: "Model", colInput: "Input $/1M", colOutput: "Output $/1M",
+        colContext: "Context", colSource: "Source", colNotes: "Notes",
+        empty: "No models match.", noteLabel: "Note:",
+        noteBody: "Prices load from llm-prices.json (standard tier). Batch / Flex / Fast / long-context tiers may differ.",
+        mirror: "Mirror / CN backup: ",
+        asOf: (d, n) => `As of ${d} · ${n} models · USD / 1M tokens`,
+        showing: (n, t) => `Showing ${n} of ${t}`,
+        source: "Docs"
+      },
+      zh: {
+        navCases: "案例", navPricing: "大模型报价", navCompare: "聚合/市集",
+        eyebrow: "公开标价 · 静态 JSON",
+        title: "大模型 API 价格对比",
+        subtitle: "对比 OpenAI、Anthropic、Google、DeepSeek、xAI 公开标价（美元 / 百万 tokens）。",
+        valueProp: "仅收录标准 API 公开价，非实时报价。预算前请核对官方文档。",
+        search: "搜索", searchPlaceholder: "模型、备注…", provider: "厂商", all: "全部",
+        colProvider: "厂商", colModel: "模型", colInput: "输入 $/1M", colOutput: "输出 $/1M",
+        colContext: "上下文", colSource: "来源", colNotes: "备注",
+        empty: "没有匹配的模型。", noteLabel: "说明：",
+        noteBody: "数据来自 llm-prices.json（标准档）。Batch / Flex / Fast / 长上下文可能不同。",
+        mirror: "国内备用镜像：",
+        asOf: (d, n) => `截至 ${d} · ${n} 个模型 · 美元 / 百万 tokens`,
+        showing: (n, t) => `显示 ${n} / ${t}`,
+        source: "文档"
+      }
+    };
+
+    let lang = localStorage.getItem("aimrr-lang") || "en";
+    let models = [];
+    let meta = { as_of: "", currency: "USD" };
+    let sortKey = "input";
+    let sortDir = "asc";
+
+    const els = {
+      q: document.getElementById("q"),
+      provider: document.getElementById("provider"),
+      body: document.getElementById("table-body"),
+      empty: document.getElementById("empty"),
+      wrap: document.getElementById("table-wrap"),
+      asOf: document.getElementById("as-of"),
+      count: document.getElementById("count"),
+      langEn: document.getElementById("lang-en"),
+      langZh: document.getElementById("lang-zh")
+    };
+
+    function t() { return I18N[lang] || I18N.en; }
+
+    function applyI18n() {
+      const dict = t();
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.placeholder = dict[key];
+      });
+      els.langEn.classList.toggle("active", lang === "en");
+      els.langZh.classList.toggle("active", lang === "zh");
+      const allOpt = els.provider.querySelector('option[value=""]');
+      if (allOpt) allOpt.textContent = dict.all;
+      render();
+    }
+
+    function fmtMoney(v) {
+      if (v == null || Number.isNaN(v)) return "—";
+      return Number(v).toLocaleString("en-US", { minimumFractionDigits: 0, maximumFractionDigits: 3 });
+    }
+
+    function fmtContext(v) {
+      if (v == null) return "—";
+      if (v >= 1000000) return (v / 1000000).toFixed(v % 1000000 ? 1 : 0) + "M";
+      if (v >= 1000) return Math.round(v / 1000) + "K";
+      return String(v);
+    }
+
+    function filtered() {
+      const q = (els.q.value || "").trim().toLowerCase();
+      const p = els.provider.value;
+      let list = models.filter((m) => {
+        if (p && m.provider !== p) return false;
+        if (!q) return true;
+        const hay = [m.provider, m.model, m.notes, m.id].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+      list.sort((a, b) => {
+        const av = a[sortKey];
+        const bv = b[sortKey];
+        const an = av == null ? Infinity : Number(av);
+        const bn = bv == null ? Infinity : Number(bv);
+        return sortDir === "asc" ? an - bn : bn - an;
+      });
+      return list;
+    }
+
+    function render() {
+      const dict = t();
+      const list = filtered();
+      els.asOf.textContent = dict.asOf(meta.as_of || "—", models.length);
+      els.count.textContent = dict.showing(list.length, models.length);
+      document.querySelectorAll(".sort-btn").forEach((btn) => {
+        const k = btn.getAttribute("data-sort");
+        btn.setAttribute("data-dir", k === sortKey ? sortDir : "");
+      });
+      if (!list.length) {
+        els.wrap.classList.add("hidden");
+        els.empty.classList.remove("hidden");
+        els.body.innerHTML = "";
+        return;
+      }
+      els.wrap.classList.remove("hidden");
+      els.empty.classList.add("hidden");
+      els.body.innerHTML = list.map((m) => `
+        <tr>
+          <td>${escapeHtml(m.provider || "")}</td>
+          <td><code>${escapeHtml(m.model || "")}</code></td>
+          <td>${fmtMoney(m.input)}</td>
+          <td>${fmtMoney(m.output)}</td>
+          <td>${fmtContext(m.context)}</td>
+          <td><a href="${escapeAttr(m.source_url || "#")}" rel="noopener noreferrer" target="_blank">${dict.source}</a></td>
+          <td>${escapeHtml(m.notes || "")}</td>
+        </tr>
+      `).join("");
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function escapeAttr(s) { return escapeHtml(s).replace(/"/g, "&quot;"); }
+
+    function fillProviders() {
+      const providers = [...new Set(models.map((m) => m.provider).filter(Boolean))].sort();
+      const keep = els.provider.value;
+      els.provider.innerHTML = `<option value="" data-i18n="all">${t().all}</option>` +
+        providers.map((p) => `<option value="${escapeAttr(p)}">${escapeHtml(p)}</option>`).join("");
+      if (providers.includes(keep)) els.provider.value = keep;
+    }
+
+    els.q.addEventListener("input", render);
+    els.provider.addEventListener("change", render);
+    document.querySelectorAll(".sort-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const k = btn.getAttribute("data-sort");
+        if (sortKey === k) sortDir = sortDir === "asc" ? "desc" : "asc";
+        else { sortKey = k; sortDir = "asc"; }
+        render();
+      });
+    });
+    els.langEn.addEventListener("click", () => { lang = "en"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+    els.langZh.addEventListener("click", () => { lang = "zh"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+
+    fetch("llm-prices.json", { cache: "no-store" })
+      .then((r) => {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then((data) => {
+        meta = data;
+        models = Array.isArray(data.models) ? data.models : [];
+        fillProviders();
+        applyI18n();
+      })
+      .catch((err) => {
+        els.asOf.textContent = "Failed to load llm-prices.json: " + err.message;
+        els.empty.classList.remove("hidden");
+        els.wrap.classList.add("hidden");
+      });
+  })();
+  </script>
+</body>
+</html>

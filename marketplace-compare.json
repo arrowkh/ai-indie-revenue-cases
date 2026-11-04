@@ -1,0 +1,117 @@
+{
+  "as_of": "2026-11-04",
+  "notes": "Lightweight aggregator/marketplace listings for indie AI products. Fees and featured prices change often — verify on each site before selling.",
+  "markets": [
+    {
+      "id": "gumroad",
+      "name": "Gumroad",
+      "url": "https://gumroad.com",
+      "type": "marketplace",
+      "focus": "Digital products, memberships, indie tools",
+      "pricing": "commission",
+      "fee_note": "10% + $0.50 per direct/profile sale; 30% flat via Discover marketplace (processing included on Discover).",
+      "as_of": "2026-11-04",
+      "source_url": "https://gumroad.com/pricing"
+    },
+    {
+      "id": "promptbase",
+      "name": "PromptBase",
+      "url": "https://promptbase.com",
+      "type": "marketplace",
+      "focus": "AI prompts and agent skills",
+      "pricing": "commission",
+      "fee_note": "0% via your referral/seller link; 20% via marketplace listings.",
+      "as_of": "2026-11-04",
+      "source_url": "https://promptbase.com/sell"
+    },
+    {
+      "id": "theresanaiforthat",
+      "name": "There's An AI For That",
+      "url": "https://theresanaiforthat.com",
+      "type": "directory",
+      "focus": "Large AI tool directory / discovery",
+      "pricing": "freemium",
+      "fee_note": "Browse free; paid/featured listing options for visibility (check current submit/pricing page).",
+      "as_of": "2026-11-04",
+      "source_url": "https://theresanaiforthat.com"
+    },
+    {
+      "id": "futurepedia",
+      "name": "Futurepedia",
+      "url": "https://www.futurepedia.io",
+      "type": "directory",
+      "focus": "AI tools directory with categories and filters",
+      "pricing": "freemium",
+      "fee_note": "Free browsing; listing/featured plans for tool makers (verify current submit terms).",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.futurepedia.io"
+    },
+    {
+      "id": "producthunt",
+      "name": "Product Hunt",
+      "url": "https://www.producthunt.com",
+      "type": "directory",
+      "focus": "Product launches and community ranking",
+      "pricing": "freemium",
+      "fee_note": "Free to launch; Ship / ads / featured options are paid (see Product Hunt for makers).",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.producthunt.com"
+    },
+    {
+      "id": "alternativeto-ai",
+      "name": "AlternativeTo (AI)",
+      "url": "https://alternativeto.net",
+      "type": "directory",
+      "focus": "Software alternatives including AI tools",
+      "pricing": "freemium",
+      "fee_note": "Community listings free; Premium/ads for promoted placement.",
+      "as_of": "2026-11-04",
+      "source_url": "https://alternativeto.net"
+    },
+    {
+      "id": "aitools-directory",
+      "name": "AI Tools Directory style hubs",
+      "url": "https://www.aitoolsdirectory.com",
+      "type": "directory",
+      "focus": "Generic AI tool aggregation / SEO discovery",
+      "pricing": "freemium",
+      "fee_note": "Often free submit + paid featured slots; terms vary by site.",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.aitoolsdirectory.com"
+    },
+    {
+      "id": "toolify",
+      "name": "Toolify.ai",
+      "url": "https://www.toolify.ai",
+      "type": "directory",
+      "focus": "AI tools ranking and traffic estimates",
+      "pricing": "freemium",
+      "fee_note": "Free listing options plus paid promotion packages (verify current pricing).",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.toolify.ai"
+    },
+    {
+      "id": "lemonsqueezy",
+      "name": "Lemon Squeezy",
+      "url": "https://www.lemonsqueezy.com",
+      "type": "marketplace",
+      "focus": "Digital products & SaaS payments (Merchant of Record)",
+      "pricing": "commission",
+      "fee_note": "5% + $0.50 per transaction (no monthly ecommerce fee); some payments may incur additional fees.",
+      "as_of": "2026-11-04",
+      "source_url": "https://www.lemonsqueezy.com/pricing"
+    },
+    {
+      "id": "itchio",
+      "name": "itch.io",
+      "url": "https://itch.io",
+      "type": "marketplace",
+      "focus": "Indie games, tools, digital goods",
+      "pricing": "commission",
+      "fee_note": "Seller-set revenue share (default open; you choose cut). Payment processor fees still apply.",
+      "as_of": "2026-11-04",
+      "source_url": "https://itch.io/docs/creators/faq"
+    }
+  ],
+  "items": []
+}

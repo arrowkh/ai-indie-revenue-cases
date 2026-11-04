@@ -74,6 +74,14 @@
             </a>
             <a class="profile-btn profile-btn-shop" href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank" data-i18n="shopGumroad">Gumroad shop</a>
           </div>
+          <div class="sidebar-packs" aria-label="Soft product links">
+            <p class="sidebar-packs-label" data-i18n="packsLabel">Also on Gumroad</p>
+            <ul class="sidebar-packs-list">
+              <li><a href="https://jinxingle.gumroad.com/l/hivvlw" rel="noopener noreferrer" target="_blank">AI Chat Exporter · $14</a></li>
+              <li><a href="https://jinxingle.gumroad.com/l/rrxcu" rel="noopener noreferrer" target="_blank">Grok Chat Exporter · $12</a></li>
+              <li><a href="https://jinxingle.gumroad.com/l/cdjis" rel="noopener noreferrer" target="_blank">Prompt pack · $7</a></li>
+            </ul>
+          </div>
           <div class="sidebar-lang lang-toggle view-toggle" role="group" aria-label="Language">
             <button type="button" id="lang-en" data-lang="en">EN</button>
             <button type="button" id="lang-zh" data-lang="zh">中文</button>
@@ -83,12 +91,20 @@
 
       <main class="main">
         <header>
+          <nav class="site-nav" aria-label="Site">
+            <a class="site-nav-link is-active" href="./">Cases</a>
+            <a class="site-nav-link" href="pricing.html">LLM pricing</a>
+            <a class="site-nav-link" href="compare.html">Marketplaces</a>
+          </nav>
           <div class="header-top">
             <div class="eyebrow" data-i18n="eyebrow">Curated · sourced · static</div>
           </div>
           <h1 data-i18n="title">AI Indie Revenue Cases</h1>
           <p class="subtitle" data-i18n="subtitle">
             Public revenue snapshots from indie AI products and a few scaled ceiling cases.
+          </p>
+          <p class="value-prop" data-i18n="valueProp">
+            For indie builders studying real AI revenue — curated public snapshots, updated roughly daily.
           </p>
         </header>
 
@@ -156,6 +172,7 @@
                 <th data-i18n="thRevenue">Revenue</th>
                 <th data-i18n="thCategory">Category</th>
                 <th data-i18n="thStage">Stage</th>
+                <th data-i18n="thEvidence">Evidence</th>
                 <th data-i18n="thAsOf">as_of</th>
                 <th data-i18n="thSource">Source</th>
               </tr>
@@ -177,7 +194,18 @@
         </p>
 
         <footer>
-          <span data-i18n="footerMore">More AI / Grok Bot packs → </span><a href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank">jinxingle.gumroad.com</a>
+          <div class="footer-primary">
+            <span data-i18n="footerMore">More AI / Grok Bot packs → </span>
+            <a href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank">jinxingle.gumroad.com</a>
+            <span class="footer-sep" aria-hidden="true">·</span>
+            <a href="https://jinxingle.gumroad.com/l/hivvlw" rel="noopener noreferrer" target="_blank">Chat Exporter</a>
+            <span class="footer-sep" aria-hidden="true">·</span>
+            <a href="https://jinxingle.gumroad.com/l/rrxcu" rel="noopener noreferrer" target="_blank">Grok Exporter</a>
+          </div>
+          <div class="footer-mirror">
+            <span data-i18n="footerMirror">Mirror / CN backup: </span>
+            <a href="https://ai-indie-revenue-cases.jinxingle1983.workers.dev/" rel="noopener noreferrer">workers.dev</a>
+          </div>
         </footer>
       </main>
     </div>
@@ -278,6 +306,7 @@
             <button type="button" id="btn-formspree" class="btn-secondary hidden" data-i18n="sendFormspree">Send via Formspree</button>
           </div>
           <p class="submit-status" id="submit-status" role="status" aria-live="polite"></p>
+          <p class="submit-soft-cta hidden" id="submit-soft-cta"></p>
         </div>
       </form>
     </div>

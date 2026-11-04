@@ -32,6 +32,15 @@
       eyebrow: "Curated · sourced · static",
       subtitle:
         "Public revenue snapshots from indie AI products and a few scaled ceiling cases.",
+      valueProp:
+        "For indie builders studying real AI revenue — curated public snapshots, updated roughly daily.",
+      packsLabel: "Also on Gumroad",
+      footerMirror: "Mirror / CN backup: ",
+      thEvidence: "Evidence",
+      permalink: "Link",
+      submitThanksFollow: "Thanks — if useful, follow on X for updates.",
+      submitThanksShop: "Shop (optional)",
+      evidenceTitle: (en, zh) => en + " / " + zh,
       search: "Search",
       searchPlaceholder: "Name, idea, founder…",
       category: "Category",
@@ -122,10 +131,18 @@
       },
       teams: { solo: "solo", "2-5": "2-5", vc: "vc" },
       evidence: {
-        self_reported: "self_reported",
-        screenshot: "screenshot",
-        stripe_verified: "stripe_verified",
-        press: "press",
+        self_reported: "Self-reported",
+        screenshot: "Screenshot",
+        stripe_verified: "Stripe verified",
+        press: "Press",
+        estimate: "Estimate",
+      },
+      evidenceZh: {
+        self_reported: "自述",
+        screenshot: "截图",
+        stripe_verified: "Stripe验证",
+        press: "媒体",
+        estimate: "估算",
       },
     },
     zh: {
@@ -133,6 +150,14 @@
       documentTitle: "AI 独立产品收入案例",
       eyebrow: "精选 · 有来源 · 静态站",
       subtitle: "精选 AI 独立产品与部分规模化案例的公开收入快照（idea / 收入 / 分类 / 进程）。",
+      valueProp: "给研究真实 AI 收入的独立开发者 — 精选公开快照，约每日更新。",
+      packsLabel: "Gumroad 上还有",
+      footerMirror: "镜像 / 国内备用：",
+      thEvidence: "证据",
+      permalink: "链接",
+      submitThanksFollow: "感谢提交 — 有用的话可在 X 关注更新。",
+      submitThanksShop: "店铺（可选）",
+      evidenceTitle: (en, zh) => en + " / " + zh,
       search: "搜索",
       searchPlaceholder: "名称、idea、创始人…",
       category: "分类",
@@ -226,6 +251,14 @@
         screenshot: "截图",
         stripe_verified: "Stripe验证",
         press: "媒体",
+        estimate: "估算",
+      },
+      evidenceZh: {
+        self_reported: "自述",
+        screenshot: "截图",
+        stripe_verified: "Stripe验证",
+        press: "媒体",
+        estimate: "估算",
       },
     },
   };
@@ -269,6 +302,7 @@
     submitForm: document.getElementById("submit-form"),
     submitHint: document.getElementById("submit-hint"),
     submitStatus: document.getElementById("submit-status"),
+    submitSoftCta: document.getElementById("submit-soft-cta"),
     btnCopyJson: document.getElementById("btn-copy-json"),
     btnMailto: document.getElementById("btn-mailto"),
     btnFormspree: document.getElementById("btn-formspree"),
@@ -442,17 +476,47 @@
     return t().evidence[key] || key;
   }
 
+  function evidenceBadge(key) {
+    const k = key || "self_reported";
+    const enMap = I18N.en.evidence;
+    const zhMap = I18N.zh.evidence;
+    const en = enMap[k] || k;
+    const zh = zhMap[k] || k;
+    const primary = lang === "zh" ? zh : en;
+    const secondary = lang === "zh" ? en : zh;
+    const title = en + " / " + zh;
+    return `<span class="chip evidence evidence-${escapeHtml(k)}" title="${escapeHtml(
+      title
+    )}"><span class="ev-primary">${escapeHtml(primary)}</span><span class="ev-secondary" aria-hidden="true">${escapeHtml(
+      secondary
+    )}</span></span>`;
+  }
+
+  function caseAnchorId(c) {
+    return "case-" + String(c.id || slugify(c.name));
+  }
+
+  function parseCaseHash() {
+    const raw = (location.hash || "").replace(/^#/, "").trim();
+    if (!raw) return null;
+    if (raw.startsWith("case-")) return raw.slice(5);
+    return raw;
+  }
+
   function renderCards(list) {
     const dict = t();
+    const focusId = parseCaseHash();
     els.cards.innerHTML = list
       .map((c) => {
         const rev = formatRevenue(c);
         const founder = c.founder ? `<span>${escapeHtml(c.founder)}</span>` : "<span></span>";
         const notes = notesText(c);
+        const aid = caseAnchorId(c);
+        const highlight = focusId && (c.id === focusId || aid === "case-" + focusId) ? " case-highlight" : "";
         return `
-<article class="card">
+<article class="card${highlight}" id="${escapeHtml(aid)}" data-case-id="${escapeHtml(c.id || "")}">
   <div class="card-top">
-    <h2>${escapeHtml(c.name)}</h2>
+    <h2><a class="case-title-link" href="#${escapeHtml(aid)}">${escapeHtml(c.name)}</a></h2>
     <div class="revenue">${escapeHtml(rev.main)}${
           rev.range && rev.main !== rev.range
             ? `<span class="revenue-range">${escapeHtml(rev.range)}</span>`
@@ -464,14 +528,16 @@
     ${chip(labelCategory(c.category))}
     ${chip(labelStage(c.stage), "stage-" + c.stage)}
     ${chip(labelTeam(c.team_size))}
-    ${chip(labelEvidence(c.evidence))}
+    ${evidenceBadge(c.evidence)}
   </div>
   ${notes ? `<p class="notes">${escapeHtml(notes)}</p>` : ""}
   <div class="card-foot">
     ${founder}
     <span>${escapeHtml(dict.asOf)} ${escapeHtml(c.as_of)} · <a href="${escapeHtml(
           c.source_url
-        )}" target="_blank" rel="noopener noreferrer">${escapeHtml(dict.source)}</a></span>
+        )}" target="_blank" rel="noopener noreferrer">${escapeHtml(dict.source)}</a> · <a class="permalink" href="#${escapeHtml(
+          aid
+        )}" title="${escapeHtml(dict.permalink)}">#</a></span>
   </div>
 </article>`;
       })
@@ -480,6 +546,7 @@
 
   function renderTable(list) {
     const dict = t();
+    const focusId = parseCaseHash();
     els.tableBody.innerHTML = list
       .map((c) => {
         const rev = formatRevenue(c);
@@ -488,14 +555,17 @@
           (rev.range && rev.main !== rev.range
             ? `<div class="revenue-range">${escapeHtml(rev.range)}</div>`
             : "");
-        return `<tr>
-  <td><strong>${escapeHtml(c.name)}</strong>${
+        const aid = caseAnchorId(c);
+        const highlight = focusId && (c.id === focusId || aid === "case-" + focusId) ? " case-highlight" : "";
+        return `<tr class="${highlight.trim()}" id="${escapeHtml(aid)}" data-case-id="${escapeHtml(c.id || "")}">
+  <td><strong><a class="case-title-link" href="#${escapeHtml(aid)}">${escapeHtml(c.name)}</a></strong>${
           c.founder ? `<div class="revenue-range">${escapeHtml(c.founder)}</div>` : ""
         }</td>
   <td>${escapeHtml(oneLiner(c))}</td>
   <td>${revCell}</td>
   <td>${escapeHtml(labelCategory(c.category))}</td>
   <td>${escapeHtml(labelStage(c.stage))}</td>
+  <td>${evidenceBadge(c.evidence)}</td>
   <td>${escapeHtml(c.as_of)}</td>
   <td><a href="${escapeHtml(c.source_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(
           dict.open
@@ -546,6 +616,8 @@
       const slice = pageSlice(list);
       if (view === "cards") renderCards(slice);
       else renderTable(slice);
+      // Deep-link highlight after paint
+      requestAnimationFrame(() => focusCaseFromHash({ scroll: false, forceShow: false }));
     }
   }
 
@@ -554,6 +626,65 @@
     render();
   }
 
+
+  let pendingHashFocus = true;
+
+  function focusCaseFromHash(opts) {
+    const scroll = !opts || opts.scroll !== false;
+    const forceShow = !!(opts && opts.forceShow);
+    const id = parseCaseHash();
+    if (!id || !cases.length) return false;
+    const match = cases.find((c) => c.id === id || caseAnchorId(c) === "case-" + id);
+    if (!match) return false;
+
+    let list = filtered();
+    let idx = list.findIndex((c) => c.id === match.id);
+    // Only clear filters when deep-linking / hashchange needs the case visible
+    if (idx < 0 && forceShow) {
+      if (els.q) els.q.value = "";
+      if (els.category) els.category.value = "";
+      if (els.stage) els.stage.value = "";
+      list = filtered();
+      idx = list.findIndex((c) => c.id === match.id);
+    }
+    if (idx < 0) {
+      // Case filtered out — still highlight if DOM node exists from a prior page
+      const orphan = document.getElementById(caseAnchorId(match));
+      if (orphan) orphan.classList.remove("case-highlight");
+      return false;
+    }
+
+    const targetPage = Math.floor(idx / PAGE_SIZE) + 1;
+    if (page !== targetPage && forceShow) {
+      page = targetPage;
+      const list2 = filtered();
+      els.count.textContent = t().count(list2.length);
+      els.empty.classList.toggle("hidden", list2.length === 0);
+      els.cards.classList.toggle("hidden", view !== "cards" || list2.length === 0);
+      els.tableWrap.classList.toggle("hidden", view !== "table" || list2.length === 0);
+      updatePager(list2.length);
+      if (list2.length) {
+        const slice = pageSlice(list2);
+        if (view === "cards") renderCards(slice);
+        else renderTable(slice);
+      }
+    }
+
+    const el = document.getElementById(caseAnchorId(match));
+    if (el) {
+      document.querySelectorAll(".case-highlight").forEach((n) => n.classList.remove("case-highlight"));
+      el.classList.add("case-highlight");
+      if (scroll) {
+        try {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        } catch (_) {
+          el.scrollIntoView();
+        }
+      }
+      return true;
+    }
+    return false;
+  }
 
   function fillOwnerProfile() {
     const dict = t();
@@ -721,6 +852,21 @@
     if (!els.submitStatus) return;
     els.submitStatus.textContent = msg || "";
     els.submitStatus.classList.toggle("is-error", !!isError);
+    if (els.submitSoftCta) {
+      if (!isError && msg) {
+        const dict = t();
+        els.submitSoftCta.classList.remove("hidden");
+        els.submitSoftCta.innerHTML =
+          escapeHtml(dict.submitThanksFollow) +
+          ' <a href="https://x.com/coienJxl" rel="noopener noreferrer" target="_blank">@coienJxl</a>' +
+          ' · <a href="https://jinxingle.gumroad.com" rel="noopener noreferrer" target="_blank">' +
+          escapeHtml(dict.submitThanksShop) +
+          "</a>";
+      } else {
+        els.submitSoftCta.classList.add("hidden");
+        els.submitSoftCta.innerHTML = "";
+      }
+    }
   }
 
   function updateSubmitChannelUi() {
@@ -748,6 +894,10 @@
     els.modal.removeAttribute("hidden");
     document.body.style.overflow = "hidden";
     setSubmitStatus("");
+    if (els.submitSoftCta) {
+      els.submitSoftCta.classList.add("hidden");
+      els.submitSoftCta.innerHTML = "";
+    }
     updateSubmitChannelUi();
     applyStaticI18n();
     setTimeout(() => {
@@ -924,14 +1074,25 @@
   applyStaticI18n();
   els.count.textContent = t().loading;
 
+  window.addEventListener("hashchange", () => {
+    pendingHashFocus = true;
+    focusCaseFromHash({ scroll: true, forceShow: true });
+  });
+
   fetch("cases.json")
     .then((r) => {
       if (!r.ok) throw new Error("Failed to load cases.json");
       return r.json();
     })
     .then((data) => {
+      // Accept top-level array or { cases: [...] }
       cases = Array.isArray(data) ? data : (data && Array.isArray(data.cases) ? data.cases : []);
       render();
+      if (pendingHashFocus && parseCaseHash()) {
+        // Full scroll on first load when hash present
+        setTimeout(() => focusCaseFromHash({ scroll: true, forceShow: true }), 60);
+      }
+      pendingHashFocus = false;
     })
     .catch((err) => {
       els.count.textContent = t().loadFailed;

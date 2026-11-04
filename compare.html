@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Marketplace comparison — aimrr.app</title>
+  <meta name="description" content="Lightweight fees and listing notes for Gumroad, PromptBase, AI directories, and similar indie marketplaces." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.aimrr.app/compare.html" />
+  <meta property="og:title" content="Marketplace comparison — aimrr.app" />
+  <meta property="og:description" content="Lightweight fees and listing notes for Gumroad, PromptBase, AI directories, and similar indie marketplaces." />
+  <meta property="og:url" content="https://www.aimrr.app/compare.html" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .meta-line { color: var(--muted); font-size: 0.88rem; margin: 0.35rem 0 0; }
+    .tool-lang { display: inline-flex; gap: 0.35rem; margin-left: auto; }
+    .tool-lang button { border: 1px solid var(--border); background: var(--surface); color: var(--text); border-radius: 999px; padding: 0.35rem 0.7rem; font: inherit; font-size: 0.82rem; cursor: pointer; }
+    .tool-lang button.active { border-color: #6ea8fe; background: rgba(110,168,254,0.12); }
+    .header-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .type-pill { display: inline-block; font-size: 0.72rem; padding: 0.15rem 0.45rem; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="layout">
+      <main class="main" style="grid-column: 1 / -1">
+        <nav class="site-nav" aria-label="Site">
+          <a class="site-nav-link" href="./" data-i18n="navCases">Cases</a>
+          <a class="site-nav-link" href="pricing.html" data-i18n="navPricing">LLM pricing</a>
+          <a class="site-nav-link is-active" href="compare.html" data-i18n="navCompare">Marketplaces</a>
+        </nav>
+        <header>
+          <div class="header-row">
+            <div class="eyebrow" data-i18n="eyebrow">Directories · marketplaces · static JSON</div>
+            <div class="tool-lang" role="group" aria-label="Language">
+              <button type="button" id="lang-en" class="active" data-lang="en">EN</button>
+              <button type="button" id="lang-zh" data-lang="zh">中文</button>
+            </div>
+          </div>
+          <h1 data-i18n="title">Marketplace & aggregator comparison</h1>
+          <p class="subtitle" data-i18n="subtitle">Lightweight fees and listing notes for Gumroad, PromptBase, and AI directories.</p>
+          <p class="value-prop" data-i18n="valueProp">For indie builders picking where to list or sell — fees change often; check the source.</p>
+          <p class="meta-line" id="as-of"></p>
+        </header>
+
+        <section class="controls" aria-label="Filters">
+          <label>
+            <span data-i18n="search">Search</span>
+            <input id="q" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="Name, focus…" autocomplete="off" />
+          </label>
+          <label>
+            <span data-i18n="type">Type</span>
+            <select id="type">
+              <option value="" data-i18n="all">All</option>
+              <option value="marketplace" data-i18n="typeMarketplace">Marketplace</option>
+              <option value="directory" data-i18n="typeDirectory">Directory</option>
+            </select>
+          </label>
+        </section>
+
+        <p class="meta-line" id="count"></p>
+
+        <div class="table-wrap" id="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th data-i18n="colName">Name</th>
+                <th data-i18n="colType">Type</th>
+                <th data-i18n="colFocus">Focus</th>
+                <th data-i18n="colPricing">Pricing</th>
+                <th data-i18n="colFee">Fee / notes</th>
+                <th data-i18n="colSource">Source</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+        <div class="empty hidden" id="empty" data-i18n="empty">No listings match.</div>
+
+        <p class="disclaimer"><strong data-i18n="noteLabel">Note:</strong> <span data-i18n="noteBody">Data loads from marketplace-compare.json. Directory featured prices and marketplace cuts change frequently.</span></p>
+        <footer>
+          <div class="footer-mirror">
+            <span data-i18n="mirror">Mirror / CN backup: </span>
+            <a href="https://ai-indie-revenue-cases.jinxingle1983.workers.dev/compare.html">workers.dev</a>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+  <script>
+  (function () {
+    const I18N = {
+      en: {
+        navCases: "Cases", navPricing: "LLM pricing", navCompare: "Marketplaces",
+        eyebrow: "Directories · marketplaces · static JSON",
+        title: "Marketplace & aggregator comparison",
+        subtitle: "Lightweight fees and listing notes for Gumroad, PromptBase, and AI directories.",
+        valueProp: "For indie builders picking where to list or sell — fees change often; check the source.",
+        search: "Search", searchPlaceholder: "Name, focus…", type: "Type", all: "All",
+        typeMarketplace: "Marketplace", typeDirectory: "Directory",
+        colName: "Name", colType: "Type", colFocus: "Focus", colPricing: "Pricing",
+        colFee: "Fee / notes", colSource: "Source",
+        empty: "No listings match.", noteLabel: "Note:",
+        noteBody: "Data loads from marketplace-compare.json. Directory featured prices and marketplace cuts change frequently.",
+        mirror: "Mirror / CN backup: ",
+        asOf: (d, n) => `As of ${d} · ${n} listings`,
+        showing: (n, t) => `Showing ${n} of ${t}`,
+        source: "Source"
+      },
+      zh: {
+        navCases: "案例", navPricing: "大模型报价", navCompare: "聚合/市集",
+        eyebrow: "目录 · 市集 · 静态 JSON",
+        title: "聚合站 / 市集对比",
+        subtitle: "Gumroad、PromptBase 与常见 AI 目录的费用与收录说明。",
+        valueProp: "给独立开发者选上架渠道用 — 费率常变，请核对来源。",
+        search: "搜索", searchPlaceholder: "名称、定位…", type: "类型", all: "全部",
+        typeMarketplace: "市集", typeDirectory: "目录",
+        colName: "名称", colType: "类型", colFocus: "定位", colPricing: "收费模式",
+        colFee: "费率 / 备注", colSource: "来源",
+        empty: "没有匹配项。", noteLabel: "说明：",
+        noteBody: "数据来自 marketplace-compare.json。目录推广价与市集抽成经常变动。",
+        mirror: "国内备用镜像：",
+        asOf: (d, n) => `截至 ${d} · ${n} 条`,
+        showing: (n, t) => `显示 ${n} / ${t}`,
+        source: "来源"
+      }
+    };
+
+    let lang = localStorage.getItem("aimrr-lang") || "en";
+    let markets = [];
+    let meta = { as_of: "" };
+
+    const els = {
+      q: document.getElementById("q"),
+      type: document.getElementById("type"),
+      body: document.getElementById("table-body"),
+      empty: document.getElementById("empty"),
+      wrap: document.getElementById("table-wrap"),
+      asOf: document.getElementById("as-of"),
+      count: document.getElementById("count"),
+      langEn: document.getElementById("lang-en"),
+      langZh: document.getElementById("lang-zh")
+    };
+
+    function t() { return I18N[lang] || I18N.en; }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+    }
+    function escapeAttr(s) { return escapeHtml(s); }
+
+    function applyI18n() {
+      const dict = t();
+      document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key] != null) el.textContent = dict[key];
+      });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key] != null) el.placeholder = dict[key];
+      });
+      els.langEn.classList.toggle("active", lang === "en");
+      els.langZh.classList.toggle("active", lang === "zh");
+      render();
+    }
+
+    function filtered() {
+      const q = (els.q.value || "").trim().toLowerCase();
+      const type = els.type.value;
+      return markets.filter((m) => {
+        if (type && m.type !== type) return false;
+        if (!q) return true;
+        const hay = [m.name, m.focus, m.fee_note, m.pricing, m.type].join(" ").toLowerCase();
+        return hay.includes(q);
+      });
+    }
+
+    function render() {
+      const dict = t();
+      const list = filtered();
+      els.asOf.textContent = dict.asOf(meta.as_of || "—", markets.length);
+      els.count.textContent = dict.showing(list.length, markets.length);
+      if (!list.length) {
+        els.wrap.classList.add("hidden");
+        els.empty.classList.remove("hidden");
+        els.body.innerHTML = "";
+        return;
+      }
+      els.wrap.classList.remove("hidden");
+      els.empty.classList.add("hidden");
+      els.body.innerHTML = list.map((m) => `
+        <tr>
+          <td><a href="${escapeAttr(m.url || "#")}" rel="noopener noreferrer" target="_blank">${escapeHtml(m.name || "")}</a></td>
+          <td><span class="type-pill">${escapeHtml(m.type || "")}</span></td>
+          <td>${escapeHtml(m.focus || "")}</td>
+          <td>${escapeHtml(m.pricing || "")}</td>
+          <td>${escapeHtml(m.fee_note || "")}</td>
+          <td><a href="${escapeAttr(m.source_url || m.url || "#")}" rel="noopener noreferrer" target="_blank">${dict.source}</a></td>
+        </tr>
+      `).join("");
+    }
+
+    els.q.addEventListener("input", render);
+    els.type.addEventListener("change", render);
+    els.langEn.addEventListener("click", () => { lang = "en"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+    els.langZh.addEventListener("click", () => { lang = "zh"; localStorage.setItem("aimrr-lang", lang); applyI18n(); });
+
+    fetch("marketplace-compare.json", { cache: "no-store" })
+      .then((r) => {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.json();
+      })
+      .then((data) => {
+        meta = data;
+        markets = Array.isArray(data.markets) ? data.markets : [];
+        applyI18n();
+      })
+      .catch((err) => {
+        els.asOf.textContent = "Failed to load marketplace-compare.json: " + err.message;
+        els.empty.classList.remove("hidden");
+        els.wrap.classList.add("hidden");
+      });
+  })();
+  </script>
+</body>
+</html>
