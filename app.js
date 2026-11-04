@@ -930,7 +930,7 @@
       return r.json();
     })
     .then((data) => {
-      cases = Array.isArray(data) ? data : [];
+      cases = Array.isArray(data) ? data : (data && Array.isArray(data.cases) ? data.cases : []);
       render();
     })
     .catch((err) => {

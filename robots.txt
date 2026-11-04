@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-indie-revenue-cases.jinxingle1983.workers.dev/sitemap.xml
+Sitemap: https://www.aimrr.app/sitemap.xml
