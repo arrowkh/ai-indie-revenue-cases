@@ -21,7 +21,7 @@ Open http://127.0.0.1:8080
 
 Static-first: keep the page clean; update data by editing files.
 
-1. Edit `cases.json` — add/adjust a case (keep the schema keys below).
+1. Edit `cases.json` — **add new cases or update existing rows by `id`** (keep the schema keys below). **Never drop a case only because `as_of` looks stale**; keep historical rows and refresh fields when a fresher public disclosure appears.
 2. Optionally tweak copy in `index.html` if filters/labels change.
 3. Preview locally (`python3 -m http.server 8080`).
 4. Publish the change (see **How daily updates reach Cloudflare** below).
