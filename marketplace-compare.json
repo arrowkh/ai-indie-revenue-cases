@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "notes": "API aggregators / inference gateways (unified model APIs), not AI tool directories. Fees and model catalogs change often — verify on each source.",
   "markets": [
     {
@@ -9,9 +9,9 @@
       "type": "aggregator",
       "focus": "Unified multi-provider LLM API router (600+ models)",
       "pricing": "pass-through + credit fee",
-      "fee_note": "No markup on provider list inference. Platform fee on credit purchases: Standard 5.5% (min $0.80); Business 8%; crypto 5%. BYOK: $25k/mo list-price inference free on Standard/Business, then 5%.",
-      "models_note": "600+ models / 80+ providers; auto-routing and preferred vendor selection on paid plans.",
-      "as_of": "2026-11-05",
+      "fee_note": "No markup on provider list inference. Platform fee on credit purchases: Standard 5.5% (min applied per FAQ); Business 8%; Enterprise discounts. BYOK: $25k/mo list-price inference free on Standard/Business, then 5%. Free tier: 25+ free models, 50 req/day (1k/day after $10 credits).",
+      "models_note": "600+ models / 80+ providers on paid plans; 25+ free models / 4 free providers on Free. Auto-routing and preferred vendor on paid plans.",
+      "as_of": "2026-11-06",
       "source_url": "https://openrouter.ai/pricing"
     },
     {
@@ -21,9 +21,9 @@
       "type": "aggregator",
       "focus": "Terminal coding agent + Console Go subscription for curated open-weight model access",
       "pricing": "subscription",
-      "fee_note": "Go $10/mo, Go Plus $40/mo, Go Teams $20/member/mo for usage allowances on curated models (top-up credits / Extra Usage if needed). Not a raw per-token pass-through catalog like OpenRouter.",
-      "models_note": "Curated agentic models (e.g. Kimi K3 / K3.1 Pro, DeepSeek V4/V4.1 Flash, GLM-5.3-Flash, MiniMax M3.1 Flash, MiMo-V2.6-Flash, Qwen3.7 Plus, GPT 6 Luna, Claude Haiku 5.5) with monthly allowance tables on pricing page.",
-      "as_of": "2026-11-05",
+      "fee_note": "Go $10/mo, Go Plus $40/mo, Go Teams from ~$20/member/mo for usage allowances on curated models (top-up credits / Extra Usage if needed). Not a raw per-token pass-through catalog like OpenRouter.",
+      "models_note": "Curated agentic models (e.g. Kimi K3 / K3.1 Pro, DeepSeek V4 Pro / V4.1 Flash, Hy4, GLM-5.3-Flash, MiniMax M3.1 Flash, MiMo-V2.6-Flash, Qwen3.7 Plus, GPT 6 Luna, Claude Haiku 5.5, Muse Spark 1.3) with monthly allowance tables on pricing page (~31 models).",
+      "as_of": "2026-11-06",
       "source_url": "https://opencode.ai/pricing"
     },
     {
@@ -33,9 +33,9 @@
       "type": "inference",
       "focus": "Serverless + dedicated inference for open and partner models",
       "pricing": "per-token",
-      "fee_note": "Pay-per-token serverless rates by model (e.g. Kimi K3 $3/$15, GLM-5.3 $1.40/$4.40, MiniMax M3.1 Flash $0.15/$0.60 on pricing page). Dedicated GPUs billed hourly.",
-      "models_note": "Broad open-weight + frontier hosted catalog; OpenAI-compatible APIs.",
-      "as_of": "2026-11-05",
+      "fee_note": "Pay-per-token serverless rates by model on pricing page; dedicated GPUs billed hourly. Start free / scale on demand — verify live model table before quoting.",
+      "models_note": "Broad open-weight + frontier hosted catalog; OpenAI-compatible APIs (serverless inference, fine-tuning, GPU clusters).",
+      "as_of": "2026-11-06",
       "source_url": "https://www.together.ai/pricing"
     },
     {
@@ -45,9 +45,9 @@
       "type": "inference",
       "focus": "Production serverless inference with Standard/Priority/Batch/Spot modes",
       "pricing": "per-token",
-      "fee_note": "Prepaid credits; serverless from ~$0.05/1M input on highlighted models. Cached input often ≤50% of input (no write fee); Priority/Batch/Spot modes listed separately.",
-      "models_note": "Open + frontier serverless catalog (Kimi K3, Qwen 3.8 Max, GLM 5.3, DeepSeek V4.1 Flash, MiniMax M3, etc.).",
-      "as_of": "2026-11-05",
+      "fee_note": "Prepaid credits; serverless from ~$0.05/1M input on highlighted models. Cached input often ≤50% of input (no write fee); Standard/Priority/Fast/Batch/Spot modes. Batch 50% off; Spot ~30% off Standard on select models.",
+      "models_note": "Open + frontier serverless catalog (Kimi K3, Qwen 3.8 Max, GLM 5.3, DeepSeek V4.1 Flash, MiniMax M3, Nemotron 3.5 Lightning, Muse Spark Open, etc.).",
+      "as_of": "2026-11-06",
       "source_url": "https://fireworks.ai/pricing"
     },
     {
@@ -59,7 +59,7 @@
       "pricing": "per-token",
       "fee_note": "Pay-as-you-go token pricing by model on GroqCloud (public marketing page is high-level — verify exact $/1M in console/docs). Optimized for speed rather than cheapest $/token.",
       "models_note": "Selected open models on GroqCloud; OpenAI-compatible endpoints.",
-      "as_of": "2026-11-05",
+      "as_of": "2026-11-06",
       "source_url": "https://groq.com/pricing"
     },
     {
@@ -71,7 +71,7 @@
       "pricing": "per-token",
       "fee_note": "Per-model $/1M input & output on pricing page; often undercuts lab list on open weights. Standard / Priority (1.5×) / Flex (0.8×) service tiers. GPU rentals also available.",
       "models_note": "Large catalog (DeepSeek, Kimi, Qwen, Llama, Gemma, Gemini/Claude hosted rows, etc.).",
-      "as_of": "2026-11-05",
+      "as_of": "2026-11-06",
       "source_url": "https://deepinfra.com/pricing"
     },
     {
@@ -81,9 +81,9 @@
       "type": "inference",
       "focus": "Budget Model APIs + GPU / serverless endpoints",
       "pricing": "per-token",
-      "fee_note": "Model API token rates on pricing page; batch inference introductory 50% off input/output for supported models. GPU resources billed separately.",
+      "fee_note": "Model API token rates on pricing page; batch inference introductory discounts for supported models. GPU resources billed separately.",
       "models_note": "Serverless model endpoints (DeepSeek, GLM, Kimi, Qwen, MiniMax, MiMo, etc.) plus dedicated/GPU options.",
-      "as_of": "2026-11-05",
+      "as_of": "2026-11-06",
       "source_url": "https://novita.ai/pricing"
     },
     {
@@ -95,7 +95,7 @@
       "pricing": "per-token",
       "fee_note": "Pay-as-you-go model APIs (OpenAI/Anthropic-compatible). Exact $/¥ rates are in console model list — public intro docs do not list full token tables; verify before quoting.",
       "models_note": "Broad multimodal model catalog via SiliconFlow / cloud.siliconflow.com.",
-      "as_of": "2026-11-05",
+      "as_of": "2026-11-06",
       "source_url": "https://docs.siliconflow.cn/en/userguide/introduction"
     },
     {
@@ -107,7 +107,7 @@
       "pricing": "commission",
       "fee_note": "10% + $0.50 per direct sale; 30% via Discover. Kept as seller channel, not an API aggregator.",
       "models_note": "N/A — product marketplace.",
-      "as_of": "2026-11-05",
+      "as_of": "2026-11-06",
       "source_url": "https://gumroad.com/pricing"
     }
   ]

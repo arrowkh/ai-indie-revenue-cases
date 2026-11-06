@@ -129,9 +129,9 @@
     "id": "postiz",
     "name": "Postiz",
     "one_liner": "Open-source agentic social media scheduler across 30+ networks.",
-    "revenue": 367170,
+    "revenue": 373501,
     "revenue_unit": "MRR",
-    "revenue_range": "~$367K Stripe MRR / ~$401K last-30d (TrustMRR Nov 2026); Whop billing not fully included",
+    "revenue_range": "~$374K Stripe MRR / ~$409K last-30d (TrustMRR Nov 2026); Whop billing not fully included",
     "category": "marketing-seo",
     "stage": "breakout",
     "team_size": "2-5",
@@ -139,27 +139,9 @@
     "as_of": "2026-11",
     "evidence": "stripe_verified",
     "founder": "Nevo David",
-    "notes": "Stripe-verified on TrustMRR (updated 2026-11-04): $367,170 MRR, 10,787 subs; ~$401K last-30d. Founder notes extra Whop recurring not in Stripe totals.",
+    "notes": "Stripe-verified on TrustMRR (updated 2026-11-05): $373,501 MRR, 10,970 subs; ~$409K last-30d. Founder notes significant Whop recurring not in Stripe totals.",
     "one_liner_zh": "开源代理式社媒排程，覆盖 30+ 平台。",
-    "notes_zh": "TrustMRR Stripe 验证（2026-11-04）：$367,170 MRR，10,787 订阅；近 30 日约 $401K。创始人注明 Whop 侧经常性收入未完全计入。"
-  },
-  {
-    "id": "headshotpro",
-    "name": "HeadshotPro",
-    "one_liner": "AI professional headshots from selfies (one-time purchase).",
-    "revenue": null,
-    "revenue_unit": "last_30d",
-    "revenue_range": "Widely cited peak ~$300K/mo sales (one-time; figure debated)",
-    "category": "image-video",
-    "stage": "growing",
-    "team_size": "2-5",
-    "source_url": "https://www.starterstory.com/stories/headshotpro-breakdown",
-    "as_of": "2024-12",
-    "evidence": "self_reported",
-    "founder": "Danny Postma",
-    "notes": "SEO-led AI headshot business; $300K/mo is profiled as peak monthly sales, not verified MRR.",
-    "one_liner_zh": "自拍生成专业证件照（一次性购买）。",
-    "notes_zh": "SEO 驱动的 AI 证件照业务；$300K/月被描述为峰值月销售额，非经核实 MRR。"
+    "notes_zh": "TrustMRR Stripe 验证（2026-11-05）：$373,501 MRR，10,970 订阅；近 30 日约 $409K。创始人注明 Whop 侧经常性收入未完全计入。"
   },
   {
     "id": "aeo-engine",
@@ -326,9 +308,9 @@
     "id": "post-bridge",
     "name": "Post Bridge",
     "one_liner": "Cross-post once to many social platforms; API/CLI/MCP for AI agents.",
-    "revenue": 49585,
+    "revenue": 49954,
     "revenue_unit": "MRR",
-    "revenue_range": "~$49.6K MRR / ~$45.3K last-30d (TrustMRR Nov 2026)",
+    "revenue_range": "~$50K Stripe MRR / ~$47K last-30d (TrustMRR Nov 2026)",
     "category": "marketing-seo",
     "stage": "growing",
     "team_size": "solo",
@@ -336,9 +318,9 @@
     "as_of": "2026-11",
     "evidence": "stripe_verified",
     "founder": "Jack Friks",
-    "notes": "Stripe-verified on TrustMRR (2026-11-04): $49,585 MRR, 1,642 subs; ~$45K last-30d / ~$567K all-time. Marketer $39/mo, Operator $99/mo. Soft-launched Oct 2024; hard paywall, no free plan.",
+    "notes": "Stripe-verified on TrustMRR (updated 2026-11-05): $49,954 MRR, 1,652 subs; ~$46.6K last-30d.",
     "one_liner_zh": "一次上传，多平台社媒同步；提供 API/CLI/MCP 供 AI Agent。",
-    "notes_zh": "TrustMRR Stripe 验证（2026-11-04）：$49,585 MRR，1,642 订阅；近 30 日约 $45K，累计约 $567K。Marketer $39/月、Operator $99/月。2024-10 硬付费上线，无免费档。"
+    "notes_zh": "TrustMRR Stripe 验证（2026-11-05）：$49,954 MRR，1,652 订阅；近 30 日约 $46.6K。"
   },
   {
     "id": "laper",
@@ -415,9 +397,9 @@
     "id": "kolbo-ai",
     "name": "Kolbo.AI",
     "one_liner": "All-in-one creative AI workspace (100+ image/video/music/chat models).",
-    "revenue": 40150,
+    "revenue": 41302,
     "revenue_unit": "MRR",
-    "revenue_range": "~$40K Stripe MRR / ~$96K last-30d (TrustMRR Nov 2026); founder also cites ~$60K/mo revenue",
+    "revenue_range": "~$41K Stripe MRR / ~$96K last-30d (TrustMRR Nov 2026)",
     "category": "productivity",
     "stage": "growing",
     "team_size": "solo",
@@ -425,9 +407,9 @@
     "as_of": "2026-11",
     "evidence": "stripe_verified",
     "founder": "Zohar Vanunu",
-    "notes": "Built largely with Lovable/Cursor/Claude Code. TrustMRR Stripe-verified 2026-11-04: $40,150 MRR, 702 subs; trailing-30d higher due to credits/annual.",
+    "notes": "Stripe-verified on TrustMRR (updated 2026-11-05): $41,302 MRR, 712 subs; ~$95.9K last-30d (usage/credit packs may inflate last-30d vs MRR).",
     "one_liner_zh": "一站式创意 AI 工作区（100+ 图/视频/音乐/聊天模型）。",
-    "notes_zh": "大量用 Lovable/Cursor/Claude Code 搭建。TrustMRR Stripe 验证 2026-11-04：$40,150 MRR，702 订阅；近 30 日更高因积分/年付。"
+    "notes_zh": "TrustMRR Stripe 验证（2026-11-05）：$41,302 MRR，712 订阅；近 30 日约 $95.9K（额度包可能抬高新 30 日营收）。"
   },
   {
     "id": "formulabot",
@@ -505,9 +487,9 @@
     "id": "superx",
     "name": "SuperX",
     "one_liner": "X/Twitter growth suite — viral post intel, writing, scheduling, engagement.",
-    "revenue": 19986,
+    "revenue": 19947,
     "revenue_unit": "MRR",
-    "revenue_range": "~$20.0K MRR / ~$18.3K last-30d (TrustMRR Nov 2026)",
+    "revenue_range": "~$20K Stripe MRR / ~$18K last-30d (TrustMRR Nov 2026)",
     "category": "marketing-seo",
     "stage": "growing",
     "team_size": "solo",
@@ -515,9 +497,9 @@
     "as_of": "2026-11",
     "evidence": "stripe_verified",
     "founder": "Rob Hallam",
-    "notes": "Stripe-verified on TrustMRR (2026-11-04): $19,986 MRR, 472 subs; ~$18.3K last-30d / ~$265K all-time. Founded Aug 2025 (France). Web app + Chrome extension for X growth.",
+    "notes": "Stripe-verified on TrustMRR (updated 2026-11-05): $19,947 MRR, 471 subs; ~$18.0K last-30d.",
     "one_liner_zh": "X/Twitter 增长套件——爆款洞察、写作、排程与互动。",
-    "notes_zh": "TrustMRR Stripe 验证（2026-11-04）：$19,986 MRR，472 订阅；近 30 日约 $18.3K，累计约 $265K。2025-08 法国创立。Web + Chrome 扩展。"
+    "notes_zh": "TrustMRR Stripe 验证（2026-11-05）：$19,947 MRR，471 订阅；近 30 日约 $18.0K。"
   },
   {
     "id": "trackai",
@@ -592,6 +574,24 @@
     "notes_zh": "罗马尼亚个人开发者。TrustMRR Stripe 验证（2026-11-04）：$10,871 MRR，227 订阅；近 30 日约 $33.3K，累计约 $160K。套餐自 $29/月起。"
   },
   {
+    "id": "mono",
+    "name": "Mono",
+    "one_liner": "One subscription to switch across leading AI models with shared memory and research tools.",
+    "revenue": 10842,
+    "revenue_unit": "MRR",
+    "revenue_range": "~$10.8K Stripe MRR / ~$10.3K last-30d (TrustMRR Nov 2026)",
+    "category": "ai-productivity",
+    "stage": "early",
+    "team_size": "1",
+    "source_url": "https://trustmrr.com/startup/mono",
+    "as_of": "2026-11",
+    "evidence": "stripe_verified",
+    "founder": "Jonas Kamber",
+    "notes": "Stripe-verified on TrustMRR (updated 2026-11-05): $10,842 MRR, 392 subs; ~$10.3K last-30d; all-time ~$84K. Plans Mono $20 / Pro $34 / Max $96. Product: mono.chat.",
+    "one_liner_zh": "一份订阅切换多家顶尖模型，共享记忆与研究能力。",
+    "notes_zh": "TrustMRR Stripe 验证（2026-11-05）：$10,842 MRR，392 订阅；近 30 日约 $10.3K；累计约 $84K。套餐 Mono $20 / Pro $34 / Max $96。产品站点 mono.chat。"
+  },
+  {
     "id": "setter-ai",
     "name": "Setter AI",
     "one_liner": "AI appointment setting — text follow-up that books calendar slots.",
@@ -644,5 +644,23 @@
     "notes": "Reached ~$10K MRR then sold for undisclosed six figures (~1 year).",
     "one_liner_zh": "在 Reddit / Twitter 自动回复并提及你的产品。",
     "notes_zh": "达到约 $10K MRR 后以未披露六位数金额出售（约 1 年）。"
+  },
+  {
+    "id": "headshotpro",
+    "name": "HeadshotPro",
+    "one_liner": "AI professional headshots from selfies (one-time purchase).",
+    "revenue": null,
+    "revenue_unit": "last_30d",
+    "revenue_range": "Widely cited peak ~$300K/mo sales (one-time; figure debated)",
+    "category": "image-video",
+    "stage": "growing",
+    "team_size": "2-5",
+    "source_url": "https://www.starterstory.com/stories/headshotpro-breakdown",
+    "as_of": "2024-12",
+    "evidence": "self_reported",
+    "founder": "Danny Postma",
+    "notes": "SEO-led AI headshot business; $300K/mo is profiled as peak monthly sales, not verified MRR.",
+    "one_liner_zh": "自拍生成专业证件照（一次性购买）。",
+    "notes_zh": "SEO 驱动的 AI 证件照业务；$300K/月被描述为峰值月销售额，非经核实 MRR。"
   }
 ]

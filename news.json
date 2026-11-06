@@ -1,7 +1,93 @@
 {
-  "as_of": "2026-11-05",
+  "as_of": "2026-11-06",
   "notes": "Public AI news with emphasis on free / open-weight releases, free API tiers, frontier launches, and viral indie builds. Summaries are short; follow url. Never treat as investment advice. Prefer official pages.",
   "items": [
+    {
+      "id": "2026-11-06-ant-ling-3-2-flash-free",
+      "title": "Ant Ling-3.2-flash API free for first 14 days (native multimodal)",
+      "title_zh": "蚂蚁 Ling-3.2-flash API 上线前 14 天免费（原生多模态）",
+      "summary": "Ant Ling put Ling-3.2-flash (560B MoE / 25B active, 1M context, native image+video) on API from Nov 5 with a two-week free window; post-promo prices not yet published. No open weights for 3.2 yet.",
+      "summary_zh": "蚂蚁 Ling 于 11/5 将 Ling-3.2-flash（560B MoE / 25B 激活、100 万上下文、原生图像+视频）接入 API，首两周免费；正式单价未公布。3.2 尚无开源权重。",
+      "url": "https://www.orcarouter.ai/blog/ling-3-2-flash-native-multimodal-release",
+      "tags": [
+        "free-model",
+        "api-pricing",
+        "frontier"
+      ],
+      "source": "orcarouter.ai (citing Ant changelog)",
+      "date": "2026-11-06"
+    },
+    {
+      "id": "2026-11-05-openai-gpt-6-cyber",
+      "title": "OpenAI launches GPT-6 Cyber for aligned security research",
+      "title_zh": "OpenAI 发布 GPT-6 Cyber：对齐约束下的安全研究模型",
+      "summary": "Nov 5 OpenAI post: GPT-6 Cyber improves ExploitGym to 48.5% (from 32.1% on GPT-5.6 Cyber), helped find 81 high-severity Firefox bugs and 948 Linux LPE exploits; initially limited Daybreak Red API/Codex access. List price on API docs: $20/$100 per 1M tokens (short context).",
+      "summary_zh": "OpenAI 11/5：GPT-6 Cyber 在 ExploitGym 达 48.5%（较 GPT-5.6 Cyber 的 32.1%），协助发现 81 个高危 Firefox 漏洞与 948 个 Linux 提权利用；初期限 Daybreak Red。价表短上下文 $20/$100 / 1M tokens。",
+      "url": "https://openai.com/index/introducing-gpt-6-cyber",
+      "tags": [
+        "frontier",
+        "api-pricing"
+      ],
+      "source": "openai.com",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "2026-11-05-anthropic-personal-finance",
+      "title": "Anthropic rolls out Personal Finance in Claude (US beta)",
+      "title_zh": "Anthropic 上线 Claude Personal Finance（美国 Beta）",
+      "summary": "Claude Personal Finance beta for US Pro/Max/Ultra: connect bank/card accounts via Plaid with read-only access; spending breakdowns and Q&A; hub chats not used for training.",
+      "summary_zh": "面向美国 Pro/Max/Ultra 的 Personal Finance Beta：经 Plaid 只读连接银行/信用卡，可做开支分析与问答；该中心对话不用于训练。",
+      "url": "https://claude.com/resources/articles/introducing-personal-finance-in-claude",
+      "tags": [
+        "frontier"
+      ],
+      "source": "claude.com",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "2026-11-05-baidu-ernie-5.5-flash-base",
+      "title": "Baidu open-weights ERNIE-5.5-Flash-Base (280B MoE) on Hugging Face",
+      "title_zh": "百度开源 ERNIE-5.5-Flash-Base（280B MoE）至 Hugging Face",
+      "summary": "Nov 5 Baidu release: 280B total / 14B active sparse MoE base checkpoint (33.5T pretrain; 128K train / 1M infer context). FP8 + BF16 on HF under ERNIE 5.5 Flash Base License; post-trained Flash to follow.",
+      "summary_zh": "百度 11/5：发布 280B 总参 / 14B 激活稀疏 MoE 基座（33.5T 预训练；训练 128K / 推理微调 1M 上下文）。HF 提供 FP8 与 BF16，许可为 ERNIE 5.5 Flash Base License；后训练版后续发布。",
+      "url": "https://huggingface.co/baidu/ERNIE-5.5-Flash-Base",
+      "tags": [
+        "open-weight",
+        "free-model",
+        "frontier"
+      ],
+      "source": "huggingface.co / ernie.baidu.com",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "2026-11-05-gemini-omni-1-2-flash",
+      "title": "Google Gemini Omni 1.2 Flash: 15s video clips, ~30% cheaper",
+      "title_zh": "Google Gemini Omni 1.2 Flash：最长 15 秒视频，单价约降 30%",
+      "summary": "Coverage of Google DeepMind Omni 1.2 Flash: clips up to 15s (from 10s), ~$0.07/sec at 720p (~30% below 1.1), multi-turn edit + SynthID; available via Gemini API / AI Studio / Cloud / Ultra app.",
+      "summary_zh": "综合报道：Omni 1.2 Flash 视频最长 15 秒（此前 10 秒），720p 约 $0.07/秒（较 1.1 约便宜 30%），支持多轮编辑与 SynthID；Gemini API / AI Studio / Cloud / Ultra 可用。",
+      "url": "https://the-decoder.com/googles-gemini-omni-1-2-flash-stretches-ai-video-clips-to-15-seconds-and-cuts-pricing-by-30-percent/",
+      "tags": [
+        "frontier",
+        "api-pricing"
+      ],
+      "source": "the-decoder.com",
+      "date": "2026-11-05"
+    },
+    {
+      "id": "2026-11-04-ripple-65b-open-weight",
+      "title": "Ricursive Ripple-65B Preview open weights for agentic coding",
+      "title_zh": "Ricursive 开源 Ripple-65B Preview（偏智能体编程）",
+      "summary": "65B dense open model on Hugging Face (ricursiveAI/Ripple-65B-Preview) with strong Terminal-Bench / SWE claims vs larger US MoE opens; also listed on OpenRouter/Together per secondary coverage.",
+      "summary_zh": "65B 稠密开源模型上线 HF（ricursiveAI/Ripple-65B-Preview），在 Terminal-Bench / SWE 等智能体编程评测上对标更大美国开源 MoE；二手报道称 OpenRouter/Together 亦可调用。",
+      "url": "https://huggingface.co/ricursiveAI/Ripple-65B-Preview",
+      "tags": [
+        "open-weight",
+        "free-model",
+        "frontier"
+      ],
+      "source": "huggingface.co",
+      "date": "2026-11-04"
+    },
     {
       "id": "z-ai-pricing-free-flash",
       "title": "Z.AI lists GLM-4.7-Flash / GLM-4.5-Flash API as Free",
@@ -44,19 +130,6 @@
         "api-pricing"
       ],
       "source": "Google AI for Developers",
-      "date": "2026-11-04"
-    },
-    {
-      "id": "2026-11-04-openai-linux-lpe-pipeline",
-      "title": "OpenAI: cyber pipeline finds/patches 948 Linux LPEs (~$1.2M API)",
-      "title_zh": "OpenAI：网络攻防流水线发现/修补 948 个 Linux 提权漏洞（约 $120 万 API）",
-      "summary": "Nov 4 OpenAI research post: an upcoming cyber model pipeline dynamically reproduced 1,724 Linux kernel findings and produced 948 working local privilege-escalation exploits plus candidate patches (mid-Oct run; ~$1.21M API credits). Human review + Patch the Planet reporting.",
-      "summary_zh": "OpenAI 11/4 研究博文：即将发布的 cyber 模型流水线动态复现 1,724 个 Linux 内核发现，并产出 948 个可用本地提权利用与候选补丁（10 月中旬一轮，约 $121 万 API）。经人工审阅后走 Patch the Planet 上报。",
-      "url": "https://openai.com/index/a-thousand-fewer-paths-to-root",
-      "tags": [
-        "frontier"
-      ],
-      "source": "openai.com",
       "date": "2026-11-04"
     },
     {
@@ -132,20 +205,6 @@
       "date": "2026-11-03"
     },
     {
-      "id": "cohere-trial-key-free",
-      "title": "Cohere trial keys: 1,000 API calls/month free",
-      "title_zh": "Cohere 试用 Key：每月 1000 次免费调用",
-      "summary": "Cohere rate-limit docs: trial keys get 1,000 API calls/month and ~20 RPM per chat model — evaluation only, not for production.",
-      "summary_zh": "Cohere 限流文档：试用 Key 每月 1000 次、聊天约 20 RPM — 仅评估，不可用于生产。",
-      "url": "https://docs.cohere.com/docs/rate-limits",
-      "tags": [
-        "free-model",
-        "api-pricing"
-      ],
-      "source": "Cohere docs",
-      "date": "2026-11-03"
-    },
-    {
       "id": "cloudflare-workers-ai-free-neurons",
       "title": "Cloudflare Workers AI: 10,000 free Neurons/day",
       "title_zh": "Cloudflare Workers AI：每天 1 万免费 Neurons",
@@ -160,91 +219,6 @@
       "date": "2026-11-03"
     },
     {
-      "id": "alibaba-model-studio-free-quota",
-      "title": "Alibaba Model Studio: new-user free token quota",
-      "title_zh": "阿里云百炼：新用户免费 Token 额度",
-      "summary": "Alibaba Cloud help: international Model Studio typically grants ~1M tokens per model (in+out) for 90 days after activation for Qwen in Singapore region — enable Free Quota Only to avoid overage.",
-      "summary_zh": "阿里云帮助文档：国际站 Model Studio 新用户常见为每模型约 100 万 tokens（输入+输出）90 天有效（新加坡区通义）；建议打开仅用免费额度以免超额计费。",
-      "url": "https://www.alibabacloud.com/help/en/model-studio/new-free-quota",
-      "tags": [
-        "free-model",
-        "api-pricing",
-        "qwen"
-      ],
-      "source": "Alibaba Cloud",
-      "date": "2026-11-03"
-    },
-    {
-      "id": "2026-11-03-qwen-open-weight-promise",
-      "title": "Qwen restates open-weight commitment; Max stays closed",
-      "title_zh": "通义重申开源承诺，Max 仍闭源 API",
-      "summary": "Coverage of Alibaba/Qwen’s open-weight stats and that Max-tier models remain API-only while smaller tiers stay downloadable.",
-      "summary_zh": "报道梳理通义开源数据与承诺：Max 档仍为 API-only，较小档位继续开源权重。",
-      "url": "http://rits.shanghai.nyu.edu/ai/qwen-restates-its-open-weight-promise-max-tier-still-closed/",
-      "tags": [
-        "free-model",
-        "open-weight",
-        "qwen",
-        "frontier"
-      ],
-      "source": "NYU Shanghai RITS AI notes",
-      "date": "2026-11-03"
-    },
-    {
-      "id": "2026-11-03-meituan-longcat-2.5",
-      "title": "Meituan unveils LongCat-2.5 (1.6T MoE) on domestic chips",
-      "title_zh": "美团发布 LongCat-2.5（1.6T MoE，国产芯片训成）",
-      "summary": "Caixin (Nov 3): Meituan launched LongCat-2.5 on Monday — a natively multimodal MoE with 1.6T total parameters for long-horizon agent tasks, trained entirely on homegrown accelerators. Aimed at internal merchant/workbench efficiency, not raw compute sales.",
-      "summary_zh": "财新（11/3）：美团周一发布 LongCat-2.5——原生多模态 MoE，总参 1.6T，面向长程 Agent 任务，全程国产加速卡训练。主要用于内部商家工作台提效，而非对外卖算力。",
-      "url": "https://www.caixinglobal.com/2026-11-03/meituan-unveils-new-ai-model-trained-on-homegrown-chips-102500305.html",
-      "tags": [
-        "frontier"
-      ],
-      "source": "caixinglobal.com",
-      "date": "2026-11-03"
-    },
-    {
-      "id": "2026-11-03-google-meet-ai-notice",
-      "title": "Google Meet: admin policy notice before AI note-taking",
-      "title_zh": "Google Meet：管理员可在 AI 纪要前显示政策提示",
-      "summary": "Google announced Workspace admins can show custom policy text in the Meet green room when a call is recorded, transcribed, or summarised by Gemini note-taking (rollout from ~Nov 2).",
-      "summary_zh": "谷歌宣布 Workspace 管理员可在 Meet 等候室显示自定义政策文案，用于 Gemini 录制/转写/纪要场景（约 11/2 起滚动发布）。",
-      "url": "https://theaicommand.com/ai-news/ai-updates-1-to-3-november-2026",
-      "tags": [
-        "frontier"
-      ],
-      "source": "TheAICommand digest",
-      "date": "2026-11-03"
-    },
-    {
-      "id": "2026-11-02-anthropic-flashprove",
-      "title": "Anthropic open-sources FlashProve (provable inference)",
-      "title_zh": "Anthropic 开源 FlashProve（可证明推理原型）",
-      "summary": "Anthropic research post on provable inference; FlashProve is an Apache-2.0 prototype that can cryptographically attest a response came from committed model weights without revealing them.",
-      "summary_zh": "Anthropic 发布可证明推理研究，并开源 Apache-2.0 原型 FlashProve：可在不泄露权重的情况下证明回复来自已承诺模型。",
-      "url": "https://www.anthropic.com/research/provable-inference",
-      "tags": [
-        "frontier",
-        "open-weight"
-      ],
-      "source": "Anthropic Research",
-      "date": "2026-11-02"
-    },
-    {
-      "id": "2026-10-31-karpathy-hackertube",
-      "title": "Karpathy ships HackerTube (~2h with Claude Code)",
-      "title_zh": "Karpathy 手搓上线 HackerTube（约 2 小时，Claude Code）",
-      "summary": "Andrej Karpathy’s Oct 31 post: Claude Code (Opus 5.5) mined HN comments into a YouTube-style site of 6,454 videos recommended across ~40K comments (2007–2026). He did API key, VPS and domain by hand; live at hackertube.org.",
-      "summary_zh": "Andrej Karpathy 10/31 博文：用 Claude Code（Opus 5.5）从 HN 评论筛出约 4 万条荐片评论，做成 6454 条视频的 YouTube 风格站（2007–2026）。本人只手工做了 YouTube API Key、VPS 与域名；站点 hackertube.org。",
-      "url": "https://karpathy.bearblog.dev/hacker-tube/",
-      "tags": [
-        "indie",
-        "frontier"
-      ],
-      "source": "karpathy.bearblog.dev",
-      "date": "2026-10-31"
-    },
-    {
       "id": "groq-free-plan-oss",
       "title": "Groq free plan: gpt-oss + Qwen3.8 without a card",
       "title_zh": "Groq 免费档：gpt-oss 与 Qwen3.8，无需绑卡",
@@ -257,63 +231,6 @@
       ],
       "source": "BYOKlist guide",
       "date": "2026-10-29"
-    },
-    {
-      "id": "2026-10-29-mistral-large-4-open-weight",
-      "title": "Mistral Large 4 (Le Chonk) open weights on Hugging Face",
-      "title_zh": "Mistral Large 4（Le Chonk）开源权重上线 Hugging Face",
-      "summary": "Mistral released Large 4 (~1T MoE / ~52B active, multimodal, 1M context) weights in FP8 and NVFP4 under a modified MIT (Mistral Ecosystem Open-Weight) license — free to use/fine-tune/commercialize; MaaS resale needs a separate commercial license. HF blog dated Oct 29; API ~$0.70/$2.10 per M tokens.",
-      "summary_zh": "Mistral 放出 Large 4（约 1T MoE / ~52B 激活、多模态、100 万上下文）FP8 与 NVFP4 权重，许可为改良 MIT（Mistral Ecosystem Open-Weight）：可自用/微调/商用，但做模型即服务需另购商用许可。HF 博文日期 10/29；API 约 $0.70/$2.10 每百万 token。",
-      "url": "https://mistral.ai/news/mistral-large-4-oss/",
-      "tags": [
-        "free-model",
-        "open-weight",
-        "frontier"
-      ],
-      "source": "mistral.ai",
-      "date": "2026-10-29"
-    },
-    {
-      "id": "2026-10-29-mistral-large-4-hf-blog",
-      "title": "HF blog: run Mistral Large 4 (transformers / vLLM / llama.cpp)",
-      "title_zh": "HF 博文：如何跑 Mistral Large 4（transformers / vLLM / llama.cpp）",
-      "summary": "Hugging Face Oct 29 guide for Le Chonk day-0 support: Transformers, vLLM (NVFP4), llama.cpp/GGUF, Inference Endpoints, and TRL fine-tuning. Notes ~1T total / ~49–52B active and the MaaS license caveat.",
-      "summary_zh": "Hugging Face 10/29 指南：Le Chonk 首日支持 Transformers、vLLM（NVFP4）、llama.cpp/GGUF、Inference Endpoints 与 TRL 微调。注明约 1T 总参 / ~49–52B 激活及 MaaS 许可限制。",
-      "url": "https://huggingface.co/blog/mistral-large4",
-      "tags": [
-        "free-model",
-        "open-weight"
-      ],
-      "source": "huggingface.co",
-      "date": "2026-10-29"
-    },
-    {
-      "id": "2026-10-30-baidu-unlimited-ocr-2",
-      "title": "Baidu Unlimited-OCR-2 open on HF (MIT)",
-      "title_zh": "百度 Unlimited-OCR-2 开源上线 HF（MIT）",
-      "summary": "Open-weights trackers list baidu/Unlimited-OCR-2 (~3.3B, MIT) around Oct 26–30 — OCR-focused open model.",
-      "summary_zh": "开源权重追踪约 10/26–30 列出 baidu/Unlimited-OCR-2（约 3.3B，MIT）— 面向 OCR 的开源模型。",
-      "url": "https://huggingface.co/baidu/Unlimited-OCR-2",
-      "tags": [
-        "free-model",
-        "open-weight"
-      ],
-      "source": "Hugging Face / Baidu",
-      "date": "2026-10-26"
-    },
-    {
-      "id": "2026-10-25-nanbeige-4-3-33b",
-      "title": "Nanbeige4.3-33B open under Apache 2.0 (HF)",
-      "title_zh": "Nanbeige4.3-33B 以 Apache 2.0 开源（HF）",
-      "summary": "MarkTechPost (Oct 25): Nanbeige LLM Lab (BOSS Zhipin) releases Nanbeige4.3-33B (+ Base) on Hugging Face under Apache 2.0; 33B dense, ~524k context, aimed at agentic coding/cowork.",
-      "summary_zh": "MarkTechPost（10/25）：BOSS 直聘 Nanbeige 实验室在 HF 以 Apache 2.0 发布 Nanbeige4.3-33B（及 Base）；33B 稠密、约 52.4 万上下文，面向 agentic coding。",
-      "url": "https://www.marktechpost.com/2026/10/25/nanbeige-releases-nanbeige4-3-33b-open-agentic-coding-model/",
-      "tags": [
-        "free-model",
-        "open-weight"
-      ],
-      "source": "MarkTechPost",
-      "date": "2026-10-25"
     }
   ]
 }
